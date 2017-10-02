@@ -4,23 +4,19 @@ class Math {
 
 
     public static int sum(int x, int y) {
-        int sum = x = y;
-        return sum;
+        return x + y;
     }
 
     public static int diff(int x, int y) {
-        int diff = x - y;
-        return diff;
+        return x - y;
     }
 
     public static int prod(int x, int y) {
-        int prod = x * y;
-        return prod;
+        return x * y;
     }
 
     public static double div(int x, int y) {
-        double div = (double) x / y;
-        return div;
+        return (double) x / y;
     }
 
     public static int abs(int x) {
@@ -33,18 +29,16 @@ class Math {
     public static int min(int x, int y) {
         if (x < y) {
             return x;
-        } else min = y;
+        }
         return y;
     }
 
-    public static int max(int x, int y);
+    public static int max(int x, int y)
+
     {
         if (x < y) {
             return y;
         }
         return x;
     }
-
-
-    public static void
 }
