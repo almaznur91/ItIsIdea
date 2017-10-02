@@ -3,32 +3,48 @@ package com.company;
 class Math {
 
 
-    public static void sum(int x, int y) {
-        System.out.println("Сумма х+у=" + (x + y));
+    public static int sum(int x, int y) {
+        int sum = x = y;
+        return sum;
     }
 
-    public static void diff(int x, int y) {
-        System.out.println(("Разность х-у=" + (x + y)));
+    public static int diff(int x, int y) {
+        int diff = x - y;
+        return diff;
     }
 
-    public static void prod(int x, int y) {
-        System.out.println("Проивидение х и у=" + (x * y));
+    public static int prod(int x, int y) {
+        int prod = x * y;
+        return prod;
     }
 
-    public static void div(int x, int y) {
-        System.out.println("Деление х на у=" + (x / y));
+    public static double div(int x, int y) {
+        double div = (double) x / y;
+        return div;
     }
 
-    public static void abs(int x) {
-        System.out.println(x);
+    public static int abs(int x) {
+        if (x < 0) {
+            return (-1) * x;
+        }
+        return x;
     }
 
     public static int min(int x, int y) {
-        int mini;
         if (x < y) {
-            mini = x;
-        } else mini = y;
-        return mini;
+            return x;
+        } else min = y;
+        return y;
     }
+
+    public static int max(int x, int y);
+    {
+        if (x < y) {
+            return y;
+        }
+        return x;
+    }
+
+
     public static void
 }
