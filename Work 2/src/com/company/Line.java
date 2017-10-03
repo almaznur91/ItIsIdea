@@ -11,39 +11,42 @@ package com.company;
  */
 public class Line {
 
-    private static int k;
-    private static int b;
+    private int k;
+    private int b;
 
-    public void setB(int b) {
-        Line.b = b;
-    }
-
-    public void setK(int k) {
-        Line.k = k;
-    }
-
-    public static int getB() {
+    public int getB() {
         return b;
     }
 
-    public static int getK() {
+    public int getK() {
         return k;
     }
 
     public Line(int k, int b) {
-        setK(k);
-        setB(b);
+        this.k = k;
+        this.b = b;
     }
 
-    public static int f(int x) {
+    public int f(int x) {
         return (k * x) + b;
     }
-    private static int getB.line2{
-        return line2.b;
-    }
-    public static double intersectionX(Line line2) {
 
-        return (b - line2.b) / (line2.k - k);
-
+    public double intersectionX(Line line2) {
+        if (!isParallel(line2)) {
+            return (double) (b - line2.getB()) / (line2.getK() - k);
+        }
+        else return 0;
     }
+
+    public double intersectionY(Line line2) {
+        return intersectionX(line2) * k + b;
+    }
+
+    public boolean isParallel(Line line2) {
+        if (k == line2.getK()) {
+            return true;
+        }
+        return false;
+    }
+
 }
