@@ -4,6 +4,7 @@ public class Main {
     /**
      * НИ НАМЕКА НА ООП=)
      */
+    public static void swao(){}
     public static void main(String[] args) {
         String[] string=new String[10];
         for (int i=0;i<string.length;i++){
