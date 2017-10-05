@@ -1,4 +1,4 @@
-package Task3;
+package Task3_done;
 
 public class Triangle {
     private int angle1;

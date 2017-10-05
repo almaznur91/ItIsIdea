@@ -1,4 +1,4 @@
-package Task5;
+package Task5_done;
 
 public class Main {
     public static void main(String[] args) {

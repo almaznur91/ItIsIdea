@@ -1,4 +1,4 @@
-package Task2;
+package Task2_done;
 
 /*
 1) Создай класс "прямая" (class Straight)
