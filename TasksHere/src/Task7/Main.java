@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void swap(String[] string, int a, int b) {
+    public void swap(String[] string, int a, int b) {
         String temp;
         temp = string[a];
         string[a] = string[b];
         string[b] = temp;
     }
-    public static String myStr(String[] strings) {
+    public String myStr(String[] strings) {
         String sOut = "";
         for (int i = 0; i < strings.length; i++) {
             sOut = sOut + strings[i] + " ";
@@ -23,7 +23,7 @@ public class Main {
     /**
      * НИ НАМЕКА НА ООП=)
      */
-    public static void main(String[] args) {
+    public void main(String[] args) {
         String[] string = new String[10];
         for (int i = 0; i < string.length; i++) {
             string[i] = "Номер " + i + "1, ";

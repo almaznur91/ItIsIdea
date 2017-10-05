@@ -19,6 +19,9 @@ public class Main {
         Human chelovek = new Human();
         chelovek.name = "Загр";
 
+
+
+
 //                for (int i = 0; i < 10; i++) {
 //                    Cat object = new Cat();
 //                    //не доделано

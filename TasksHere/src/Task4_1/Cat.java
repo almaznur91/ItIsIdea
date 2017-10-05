@@ -6,13 +6,7 @@ public class Cat {
     int age;
     Human mistress;
 
-    public Cat() {
-        count++;
-    }
 
-    public int getCount() {
-        return count;
-    }
 
     public void myu() {
         System.out.println("Мяу-мяу-мяу");
