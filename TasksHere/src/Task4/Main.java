@@ -1,7 +1,5 @@
 package Task4;
 
-import static Task4.Cat.getCount;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -24,12 +22,12 @@ public class Main {
         Human chelovek = new Human();
         chelovek.name = "Загр";
 
-                for (int i = 0; i < 10; i++) {
-                    Cat object = new Cat();
-                    //не доделано
-                }
-
-                System.out.println("у"+chelovek.name+ Cat.getCount() + " кошек");
+//                for (int i = 0; i < 10; i++) {
+//                    Cat object = new Cat();
+//                    //не доделано
+//                }
+//
+//                System.out.println("у"+chelovek.name+ Cat.getCount() + " кошек");
 
 
 
