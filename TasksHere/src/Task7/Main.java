@@ -2,6 +2,7 @@ package Task7;
 
 import java.util.Scanner;
 
+
 public class Main {
 
     public static void swap(String[] string, int a, int b) {
@@ -10,7 +11,7 @@ public class Main {
         string[a] = string[b];
         string[b] = temp;
     }
-    public String myStr(String[]strings) {
+    public static String myStr(String[] strings) {
         String sOut = "";
         for (int i = 0; i < strings.length; i++) {
             sOut = sOut + strings[i] + " ";
@@ -22,7 +23,7 @@ public class Main {
     /**
      * НИ НАМЕКА НА ООП=)
      */
-    public void main(String[] args) {
+    public static void main(String[] args) {
         String[] string = new String[10];
         for (int i = 0; i < string.length; i++) {
             string[i] = "Номер " + i + "1, ";
@@ -40,11 +41,6 @@ public class Main {
    // String myStr = "";
     //тут внесение массива в переменную
         System.out.println(myStr(string));
-
-
-
-
-
 
 }
 }
