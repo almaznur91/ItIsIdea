@@ -6,6 +6,11 @@ public class Main {
         //TODO: массив из кошек.
         //TODO: создай две кошки
         //TODO: занеси в массив эти кошки
-        //TODO: выведи на экран количество кошек в массиве
+
+       //TODO: выведи на экран количество кошек в массиве
     }
+    Cat vaska=new Cat();
+    Cat murka = new Cat();
+    Cat[] cats={vaska,murka};
+
 }
