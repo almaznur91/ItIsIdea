@@ -1,4 +1,4 @@
-package com.company;
+package Task1;
 
 class Math {
 

@@ -1,4 +1,4 @@
-package com.company;
+package Task2;
 
 /*
 1) Создай класс "прямая" (class Straight)

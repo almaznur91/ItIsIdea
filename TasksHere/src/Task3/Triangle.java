@@ -1,4 +1,4 @@
-package com.company;
+package Task3;
 
 public class Triangle {
     private int angle1;

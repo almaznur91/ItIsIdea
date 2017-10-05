@@ -1,4 +1,4 @@
-package com.company;
+package Task3;
 
 import java.util.Scanner;
 
@@ -19,7 +19,7 @@ public class Main {
 
         System.out.println("Введите значения трех сторон треугольника");
         Triangle triangle1 = new Triangle(new Scanner(System.in).nextInt(), new Scanner(System.in).nextInt(), new Scanner(System.in).nextInt());
-        if (triangle1.tru()){
+        if (triangle1.isTrue()){
             System.out.println("Вы ввели верные значения треугольника");
         }
         else {System.out.println("Вы ввели неверные значения треугольника");
