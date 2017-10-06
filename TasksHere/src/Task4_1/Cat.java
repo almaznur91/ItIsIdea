@@ -1,10 +1,11 @@
 package Task4_1;
 
 public class Cat {
-    int count=0;
+
     String name;
     int age;
     Human mistress;
+
 
 
 

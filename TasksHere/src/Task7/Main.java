@@ -23,7 +23,12 @@ public class Main {
     /**
      * НИ НАМЕКА НА ООП=)
      */
+<<<<<<< HEAD
     public void main(String[] args) {
+=======
+    public static void swao(){}
+    public static void main(String[] args) {
+>>>>>>> f348099b263824f09e133b5c464b1266bb94a4c7
         String[] string = new String[10];
         for (int i = 0; i < string.length; i++) {
             string[i] = "Номер " + i + "1, ";
