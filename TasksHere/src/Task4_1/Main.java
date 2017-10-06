@@ -18,11 +18,9 @@ public class Main {
         Cat murzic = new Cat();
         Human chelovek = new Human();
         chelovek.name = "Загр";
+        chelovek.howMatchCat(cat);
 
-
-
-
-//                for (int i = 0; i < 10; i++) {
+        //                for (int i = 0; i < 10; i++) {
 //                    Cat object = new Cat();
 //                    //не доделано
 //                }

@@ -8,11 +8,11 @@ public class Human {
     int count = 0;
 
     public void howMatchCat(Cat cat) {
-
+for (int i=0;i<count)
         cats[count] = cat;
         count++;
-
         System.out.println(count);
+
     }
 
     public void skol(Cat cat) {
