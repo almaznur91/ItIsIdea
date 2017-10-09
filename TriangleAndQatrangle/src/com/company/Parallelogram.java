@@ -7,9 +7,8 @@ public class Parallelogram extends Rectangle {
 
     private double x;
 
-
     private double f(double x) {
-        double r=x*PI/180;
+        double r = x * PI / 180;
         return sin(r);
 
     }
@@ -21,7 +20,7 @@ public class Parallelogram extends Rectangle {
 
     public void area() {
         double d = f(x);
-        int s = side1*side2;
+        int s = side1 * side2;
         System.out.println("Площадь параллелаграма = " + (f(x) * side1 * side2));
     }
 
