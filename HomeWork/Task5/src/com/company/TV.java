@@ -1,12 +1,17 @@
 package com.company;
 
 public class TV {
-    private Channel[]channels;
+    public TV(Channel[] channels, String modlTV) {
+        this.channels = channels;
+        this.modlTV = modlTV;
+    }
+
+    private Channel[] channels;
     private String modlTV;
 
 
-    public void showTV(){
-channels[0].showChannel();
+    public void showTV() {
+        channels[0].showChannel();
     }
 
 }
