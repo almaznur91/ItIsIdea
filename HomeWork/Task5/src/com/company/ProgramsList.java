@@ -14,5 +14,9 @@ public class ProgramsList {
         this.endTime = endTime;
     }
 
+    public  void showProgram(СhannelList chanellist){
+        System.out.println("Программа работает");
+    }
+
 
 }
