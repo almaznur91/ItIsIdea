@@ -24,6 +24,9 @@ public class Human {
     }
 
     public void goToBankAndGiveFukingMoney(Bank bank, int howMachGive) {
+
+        Object o = bank;
+
         if (bank.takeMoney(this, howMachGive)) {
             sumMoney = sumMoney - howMachGive;
         }
@@ -32,9 +35,9 @@ public class Human {
     }
 
     public void takeMeFukingMoney(Bank bank) {
-       if (bank.giveMoney(this)){
-           sumMoney=
-       }
+//       if (bank.giveMoney(this)){
+//           sumMoney=
+//       }
 
     }
 }

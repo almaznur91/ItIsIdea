@@ -1,5 +1,7 @@
 package com.company;
 
+import java.time.LocalTime;
+
 public class TV {
     public TV(Channel[] channels, String modlTV) {
         this.channels = channels;
@@ -11,7 +13,9 @@ public class TV {
 
 
     public void showTV() {
-        channels[0].showChannel();
-    }
 
-}
+        System.out.println(channels[i].showChannel());
+        }
+
+
+    }

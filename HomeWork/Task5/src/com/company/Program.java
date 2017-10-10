@@ -4,26 +4,28 @@ import java.time.LocalTime;
 
 public class Program {
 
-    private int nameProgram;
+    private String nameProgram;
     private LocalTime beginTime;
     private LocalTime endTime;
 
-    public Program(int nameProgram, LocalTime beginTime, LocalTime endTime) {
+    public LocalTime getBeginTime() {
+        return beginTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
+    public Program(String nameProgram, LocalTime beginTime, LocalTime endTime) {
         this.nameProgram = nameProgram;
         this.beginTime = beginTime;
         this.endTime = endTime;
     }
 
-    public  void showProgram(){
-
-        LocalTime currentTime= LocalTime.now();
-        if (currentTime.isAfter(beginTime)&& (currentTime.isBefore(endTime))){
-
-
-        System.out.println("Программа работает");}
-        else System.out.println();
+    public String showProgram() {
+         return nameProgram;
+        }
     }
 
 //public void showProgram1()
 
-}
