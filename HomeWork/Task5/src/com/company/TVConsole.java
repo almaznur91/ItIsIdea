@@ -18,13 +18,13 @@ public class TVConsole {
     public boolean pushButton (int button){
         switch (button){
             case 1:
-                controlTv.show(1);
+                controlTv.show(0);
                 break;
             case 2:
-                controlTv.show(2);
+                controlTv.show(1);
                 break;
             case 3:
-                controlTv.show(3);
+                controlTv.show(2);
                 default:
                     System.out.println("");
         }
