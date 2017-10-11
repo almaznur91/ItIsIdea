@@ -1,8 +1,9 @@
 package com.company;
 
 public class Dot extends Circle {
-    public Dot(int r, int BigR) {
-        super(r, BigR);
+    public Dot()
+    {
+        super( 0);
     }
 
     public void area(){

@@ -4,8 +4,8 @@ import static java.lang.Math.PI;
 
 public class Circle extends Ellipse {
 
-    public Circle(int r, int BigR) {
-        super(r, BigR);
+    public Circle(int r) {
+        super(r, 0);
     }
 
     public void area() {
