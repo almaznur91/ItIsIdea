@@ -23,9 +23,14 @@ public class Program {
     }
 
     public String showProgram() {
-         return nameProgram;
+        LocalTime now = LocalTime.now();
+        if (now.isAfter(beginTime) && now.isBefore(endTime)) {
+            return nameProgram;
         }
+        return "";
     }
+
+}
 
 //public void showProgram1()
 
