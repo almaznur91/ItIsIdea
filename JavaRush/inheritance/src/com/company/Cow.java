@@ -1,8 +1,10 @@
 package com.company;
 
-public class Cow extends Animals {
 
-    public Cow(int size, int weight) {
-        super(size, weight);
-    }
+public class Cow{
+
+
+    public static int count=0;
+
 }
+
