@@ -40,7 +40,7 @@ public class Program {
 
     char number[] = {'1', '4', '5', '6'};
     public int x (){
-        return  (number[0] * 1000 + number[1] * 100 + number[2] * 10 + number[3] * 1);
+        return  ((number[0]-48) * 1000 + (number[1]-48) * 100 + (number[2]-48) * 10 + (number[3]-48) * 1);
     }
 
 
