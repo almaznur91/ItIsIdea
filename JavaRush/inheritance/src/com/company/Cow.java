@@ -1,10 +1,12 @@
 package com.company;
 
 
+import java.io.BufferedReader;
+
 public class Cow{
-
-
-    public static int count=0;
+public String getUserInput (String promtp){
+    String inputLine=null;
+    System.out.println(promtp+" ");
 
 }
 
