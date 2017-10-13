@@ -37,13 +37,8 @@ public class Program {
         return false;
     }
 
-    private char n1;
-    private char n2;
-    private char n3;
-    private char n4;
 
-    char number[] = {n1, n2, n3, n4};
-
+    char number[] = {'1', '4', '5', '6'};
     public int x (){
         return  (number[0] * 1000 + number[1] * 100 + number[2] * 10 + number[3] * 1);
     }
