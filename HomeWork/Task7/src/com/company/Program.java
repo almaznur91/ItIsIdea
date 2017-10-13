@@ -37,11 +37,11 @@ public class Program {
         return false;
     }
 
-
-    char number[] = {'1', '4', '5', '6'};
     public int x (){
+        char number[] = {'1', '4', '5', '6'};
         return  ((number[0]-48) * 1000 + (number[1]-48) * 100 + (number[2]-48) * 10 + (number[3]-48) * 1);
     }
+
 
 
 }
