@@ -1,34 +1,42 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
+import java.util.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
 
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int m = scanner.nextInt();
-        ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < n; i++) {
-            list.add(scanner.nextLine());
+        Set<Cat> cats = creatCats();
+        Iterator<Cat>it=cats.iterator();
+        if(it.hasNext()){
+            cats.remove(it.next());
+
         }
-        for (int i = 0; i < m; i++) {
-            list.add(list.size() - m + i, list.get(i));
-        }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i));
-        }
+        show(cats);
+
     }
 
-    public static ArrayList<String> doubleValues(ArrayList<String> list) {
-        for (int i = 0; i < list.size(); i++) {
-            list.add(i + 1, list.get(i));
-            i++;
-        }
-        return list;
+    public static Set<Cat> creatCats() {
+        Set<Cat> cats = new HashSet<Cat>();
+        cats.add(new Cat());
+        cats.add(new Cat());
+        cats.add(new Cat());
+
+        return cats;
     }
 
+    public static void show(Set<Cat> cats) {
+        for (Cat cat : cats) {
+            System.out.println(cat);
+        }
+
+
+    }
+
+    public static class Cat {
+
+    }
 }
