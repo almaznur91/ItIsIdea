@@ -1,10 +1,8 @@
-package ru.itpark;
-
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public class Main {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/Nurmukhametov_db";
+    private static final String URL = "jdbc:postgresql://localhost:5432/zadr1.0";
     private static final String USER = "postgres";
     private static final String PASSWORD = "301991666";
 
@@ -15,19 +13,15 @@ public class Main {
         dataSource.setUsername(USER);
         dataSource.setPassword(PASSWORD);
 
-        HumansDao humansDao = new HumansDaoJdbcTemplateImpl(dataSource);
+        FureDao humansDao = new FigureJdbcTimlateDao(dataSource);
 
-        HumanService service = new HumanService(humansDao);
+       // HumanService service = new HumanService(humansDao);
+Figure figure = Figure.builder()
+        .name("ThreeANGLE")
+        .numberOfAngles(3)
+        .build();
 
-        Human human = Human.builder()
-                .age(25)
-                .citizen("РФ")
-                .name("Марик")
-                .build();
-
-
-        humansDao.save(human);
-        humansDao.find((long)1);
+        humansDao.creattable
         System.out.println(humansDao.findAll());
 
 //    service.registerUser(human);
