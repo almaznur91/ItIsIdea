@@ -2,17 +2,17 @@ package com.company;
 
 import java.util.Observable;
 
-public class WeatherData  implements com.company.Observable{
-    Observer observer;
+public class WeatherData  {
 
-    void setObserver(Observer observer){
-        this.observer=observer;  //чет не прет
+    StatisticDisplay statisticDisplay;
+
+    void setStatisticDisplay(StatisticDisplay statisticDisplay){
+        this.statisticDisplay=statisticDisplay;
     }
 
-    @Override
-    public void event() {
-         {
-            observer.handleEvent();
-        }
+    void event(){
+        statisticDisplay.handleEvent();
     }
+
+
 }
