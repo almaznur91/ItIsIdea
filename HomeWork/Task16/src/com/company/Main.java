@@ -8,11 +8,12 @@ public class Main {
         // write your code hereg
         WeatherData weatherData = new WeatherData();
 
-        weatherData.addObserver(new StatisticDisplay());
-        weatherData.addObserver(new PartyDisplay());
+        weatherData.addObserver(new StatisticDisplay(weatherData.count));
+        weatherData.addObserver(new PartyDisplay(weatherData.count));
 
 
         weatherData.event();
+        
 
     }
 }
