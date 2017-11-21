@@ -7,8 +7,6 @@ public class Main {
         WeatherData weatherData = new WeatherData();
         weatherData.setObserver(new ForecastDisplay());
         weatherData.event();
-        weatherData.setObserver(new StatisticDisplay());
-        weatherData.event();
 
     }
 }
