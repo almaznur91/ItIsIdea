@@ -1,17 +1,22 @@
 package com.company;
 
+import java.util.LinkedList;
 import java.util.Observable;
 
-public class WeatherData  {
+public class WeatherData {
 
     Observer observer;
+    LinkedList<Observer> observers = new LinkedList<>();
 
-    void setObserver(Observer observer){
-        this.observer=observer;
+
+    void addObserver(Observer observer) {
+        observers.add(observer);
     }
 
-    void event(){
-        observer.handleEvent();
+    void event() {
+        for (int i = 0; i < observers.size(); i++) {
+            observers.get(0).handleEvent();
+        }
     }
 
 
