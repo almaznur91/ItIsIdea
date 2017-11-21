@@ -12,10 +12,11 @@ public class WeatherData {
 
     void addObserver(Observer observer) {
         observers.add(observer);
+        count++;
+
     }
 
     void event() {
-        count++;
 
         for (Observer observer:observers
              ) {
