@@ -14,9 +14,11 @@ public class WeatherData {
     }
 
     void event() {
-        for (int i = 0; i < observers.size(); i++) {
-            observers.get(0).handleEvent();
+        for (Observer observer:observers
+             ) {
+            observer.handleEvent();
         }
+
     }
 
 
