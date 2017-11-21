@@ -3,16 +3,16 @@ package com.company;
 import java.util.Observable;
 
 public class WeatherData  implements com.company.Observable{
-    StatisticDisplay statisticDisplay;
+    Observer observer;
 
     void setObserver(Observer observer){
-    statisticDisplay=observer;  //чет не прет
+        this.observer=observer;  //чет не прет
     }
-    
+
     @Override
-    public void event(Observer observer) {
+    public void event() {
          {
-            statisticDisplay.handleEvent();
+            observer.handleEvent();
         }
     }
 }
