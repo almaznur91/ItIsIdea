@@ -5,9 +5,10 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
         WeatherData weatherData = new WeatherData();
-        weatherData.setStatisticDisplay(new ForecastDisplay());
+        weatherData.setObserver(new ForecastDisplay());
         weatherData.event();
-
+        weatherData.setObserver(new StatisticDisplay());
+        weatherData.event();
 
     }
 }

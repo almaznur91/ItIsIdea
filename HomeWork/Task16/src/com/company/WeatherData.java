@@ -4,14 +4,14 @@ import java.util.Observable;
 
 public class WeatherData  {
 
-    ForecastDisplay forecastDisplay;
+    Observer observer;
 
-    void setStatisticDisplay(ForecastDisplay forecastDisplay){
-        this.forecastDisplay=forecastDisplay;
+    void setObserver(Observer observer){
+        this.observer=observer;
     }
 
     void event(){
-        forecastDisplay.handleEvent();
+        observer.handleEvent();
     }
 
 
