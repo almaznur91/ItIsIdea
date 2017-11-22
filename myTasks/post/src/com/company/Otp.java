@@ -9,9 +9,6 @@ public class Otp {
         this.pull = pull;
     }
 
-
-
-
     public int getNumberOTP() {
         return numberOTP;
     }

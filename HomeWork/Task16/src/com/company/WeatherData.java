@@ -5,21 +5,22 @@ import java.util.Observable;
 
 public class WeatherData {
 
-    int count = 1;
+    int count;
     Observer observer;
     LinkedList<Observer> observers = new LinkedList<>();
 
 
     void addObserver(Observer observer) {
         observers.add(observer);
-        count++;
 
     }
 
     void event() {
         count++;
+
         for (Observer observer : observers
                 ) {
+
             observer.handleEvent();
         }
 

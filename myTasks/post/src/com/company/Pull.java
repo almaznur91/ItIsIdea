@@ -1,7 +1,7 @@
 package com.company;
 
 public class Pull {
-int numberPull;
+public int numberPull;
 
 
 
