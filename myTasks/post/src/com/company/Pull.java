@@ -8,10 +8,12 @@ int numberPull;
         return numberPull;
     }
 
-    public void receive(Otp otp){
-        this.numberPull=otp.getNumberOTP();
+//    public void receive(Otp otp){
+//        this.numberPull=otp.getNumberOTP();
+//    }
+
+
+    public void setNumberPull(int numberPull) {
+        this.numberPull = numberPull;
     }
-
-
-
 }

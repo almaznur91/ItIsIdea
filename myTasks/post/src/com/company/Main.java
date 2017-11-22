@@ -6,10 +6,8 @@ public class Main {
 	// write your code here
 
         Pull pull = new Pull();
-
-
-        Otp otp = new Otp(4);
-        pull.receive(otp);
+        Otp otp = new Otp();
+        otp.sendNumber(pull);
         System.out.println(pull.getNumberPull());
     }
 
