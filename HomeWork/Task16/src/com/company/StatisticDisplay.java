@@ -3,10 +3,10 @@ package com.company;
 
 public class StatisticDisplay implements Observer {
 
-    int count;
+    String count;
 
 
-    public void handleEvent(int count) {
+    public void handleEvent(String  count) {
         System.out.println("Живьем брать демонов!");
     }
 

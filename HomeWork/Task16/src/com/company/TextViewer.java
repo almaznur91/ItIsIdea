@@ -3,10 +3,14 @@ package com.company;
 import java.util.LinkedList;
 import java.util.Observable;
 
-public class WeatherData {
+public class TextViewer {
 
-    int count;
-    Observer observer;
+    String count;
+
+    public TextViewer(String count) {
+        this.count = count;
+    }
+
     LinkedList<Observer> observers = new LinkedList<>();
 
 
@@ -16,7 +20,6 @@ public class WeatherData {
 
 
     void event() {
-        count++;
 
         for (Observer observer : observers
                 ) {

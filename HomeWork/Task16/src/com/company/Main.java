@@ -1,19 +1,19 @@
 package com.company;
 
-import java.util.LinkedList;
-
 public class Main {
 
     public static void main(String[] args) {
         // write your code hereg
-        WeatherData weatherData = new WeatherData();
+        TextViewer textViewer = new TextViewer("Привет Загир");
+
         StatisticDisplay statisticDisplay = new StatisticDisplay();
-        weatherData.addObserver(statisticDisplay);
-        weatherData.addObserver(new PartyDisplay());
+        PartyDisplay partyDisplay = new PartyDisplay();
+        textViewer.addObserver(statisticDisplay);
+        textViewer.addObserver(partyDisplay);
 
+        textViewer.event();
 
-
-        weatherData.event();
+        System.out.printf("Количество пробелов ="+ partyDisplay.count1);
 
     }
 

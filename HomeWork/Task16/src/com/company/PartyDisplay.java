@@ -1,13 +1,19 @@
 package com.company;
 
 public class PartyDisplay implements Observer {
-
-    int count;
+    int count1;
+    String count;
 
     @Override
-    public void handleEvent(int count) {
+    public void handleEvent(String count) {
         System.out.println("А князь то не настоящий!");
         System.out.println(count + " - поганое число");
+        char[] chars = count.toCharArray();
+        for (int i=0;i<chars.length;i++){
+            if (chars[i]==' '){
+                count1++;
+            }
+        }
 
     }
 }
