@@ -2,16 +2,19 @@ package com.company;
 
 public class Otp {
 
-    int numberOTP = 7;
+    int numberOTP;
 
 
     public int getNumberOTP() {
         return numberOTP;
     }
 
-    public void sendNumber(Pull pull,int a){
-        this.numberOTP=a;
-        pull.setNumberPull(a);
+    public void setNumberOTP(int numberOTP) {
+        this.numberOTP = numberOTP;
+    }
+
+    public void sendNumber(Pull pull){
+        pull.setNumberPull(numberOTP);
     }
 
 }
