@@ -2,9 +2,7 @@ package com.company;
 
 public class PartyDisplay implements  Observer {
 
-    public PartyDisplay(int count) {
-        this.count = count;
-    }
+
 
     int count;
 
