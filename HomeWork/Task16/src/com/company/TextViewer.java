@@ -1,14 +1,13 @@
 package com.company;
 
 import java.util.LinkedList;
-import java.util.Observable;
 
 public class TextViewer {
 
-    String count;
+    String text;
 
-    public TextViewer(String count) {
-        this.count = count;
+    public TextViewer(String text) {
+        this.text = text;
     }
 
     LinkedList<Observer> observers = new LinkedList<>();
@@ -20,11 +19,8 @@ public class TextViewer {
 
 
     void event() {
-
-        for (Observer observer : observers
-                ) {
-
-             observer.handleEvent(this.count);
+        for (Observer observer : observers) {
+            observer.handleEvent(this.text);
         }
 
     }

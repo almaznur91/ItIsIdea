@@ -4,16 +4,14 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code hereg
-        TextViewer textViewer = new TextViewer("Привет Загир");
+        TextViewer textViewer = new TextViewer("Привет Загир 99");
 
-        StatisticDisplay statisticDisplay = new StatisticDisplay();
-        PartyDisplay partyDisplay = new PartyDisplay();
-        textViewer.addObserver(statisticDisplay);
-        textViewer.addObserver(partyDisplay);
-
+        NumberOfSpaces numberOfSpaces = new NumberOfSpaces();
+        textViewer.addObserver(numberOfSpaces);
+        textViewer.addObserver(new NumberOfDigits());
+        textViewer.addObserver(new NubersOfLetter());
         textViewer.event();
 
-        System.out.printf("Количество пробелов ="+ partyDisplay.count1);
 
     }
 
