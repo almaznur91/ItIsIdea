@@ -8,7 +8,8 @@ public class Main {
         Pull pull = new Pull();
         Otp otp = new Otp();
         otp.setNumberOTP(12);
-        otp.sendNumber(pull);
+        otp.setPull(pull);
+        otp.sendNumber();
         System.out.println(pull.getNumberPull());
     }
 

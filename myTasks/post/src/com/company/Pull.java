@@ -4,6 +4,7 @@ public class Pull {
 int numberPull;
 
 
+
     public int getNumberPull() {
         return numberPull;
     }
@@ -11,6 +12,7 @@ int numberPull;
 //    public void receive(Otp otp){
 //        this.numberPull=otp.getNumberOTP();
 //    }
+
 
 
     public void setNumberPull(int numberPull) {

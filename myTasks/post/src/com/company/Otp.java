@@ -2,7 +2,14 @@ package com.company;
 
 public class Otp {
 
+    Pull pull;
     int numberOTP;
+
+    public void setPull(Pull pull) {
+        this.pull = pull;
+    }
+
+
 
 
     public int getNumberOTP() {
@@ -13,7 +20,7 @@ public class Otp {
         this.numberOTP = numberOTP;
     }
 
-    public void sendNumber(Pull pull){
+    public void sendNumber(){
         pull.setNumberPull(numberOTP);
     }
 
