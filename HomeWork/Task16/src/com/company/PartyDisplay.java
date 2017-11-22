@@ -5,8 +5,8 @@ public class PartyDisplay implements Observer {
     int count;
 
     @Override
-    public void setCount( WeatherData weatherData) {
-        this.count = weatherData.count;
+    public void setCount( int count ) {
+        this.count = count;
     }
 
     public void handleEvent() {

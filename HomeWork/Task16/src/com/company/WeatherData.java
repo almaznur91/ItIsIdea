@@ -22,7 +22,7 @@ public class WeatherData {
                 ) {
 
             observer.handleEvent();
-            observer.setCount(this);
+            observer.setCount(this.count);
         }
 
     }
