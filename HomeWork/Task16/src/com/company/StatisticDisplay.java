@@ -2,11 +2,10 @@ package com.company;
 
 
 public class StatisticDisplay implements Observer {
-    WeatherData weatherData;
 
     int count;
 
-    public void setCount(int count) {
+    public void setCount(WeatherData weatherData) {
         this.count = weatherData.count;
     }
 

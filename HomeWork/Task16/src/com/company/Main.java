@@ -11,10 +11,11 @@ public class Main {
         weatherData.addObserver(statisticDisplay);
         weatherData.addObserver(new PartyDisplay());
 
-        System.out.println(statisticDisplay.count);
+
 
         weatherData.event();
-
+        statisticDisplay.setCount(weatherData);
+        System.out.println(statisticDisplay.count);
 
     }
 
