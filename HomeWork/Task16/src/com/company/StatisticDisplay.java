@@ -13,7 +13,7 @@ public class StatisticDisplay implements Observer {
 
 
 
-    public void handleEvent() {
+    public void handleEvent(int count) {
         System.out.println("Живьем брать демонов!");
     }
 

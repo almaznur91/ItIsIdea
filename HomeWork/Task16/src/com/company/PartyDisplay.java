@@ -9,8 +9,9 @@ public class PartyDisplay implements Observer {
         this.count = count;
     }
 
-    public void handleEvent() {
+    public void handleEvent(int count) {
         System.out.println("А князь то не настоящий!");
+        System.out.println(count + " - поганое число");
 
     }
 }

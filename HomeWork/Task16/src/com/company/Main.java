@@ -14,7 +14,6 @@ public class Main {
 
 
         weatherData.event();
-        System.out.println(statisticDisplay.count);
 
     }
 
