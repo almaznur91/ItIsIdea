@@ -1,16 +1,17 @@
 package com.company;
 
-public class PartyDisplay implements  Observer {
+public class PartyDisplay implements Observer {
 
     int count;
 
-    public void setCount(int count) {
-        this.count = count;
+    @Override
+    public void setCount( WeatherData weatherData) {
+        this.count = weatherData.count;
     }
 
     public void handleEvent() {
-            System.out.println("А князь то не настоящий!");
+        System.out.println("А князь то не настоящий!");
 
-        }
     }
+}
 

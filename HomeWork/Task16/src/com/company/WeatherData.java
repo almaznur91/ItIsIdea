@@ -12,8 +12,8 @@ public class WeatherData {
 
     void addObserver(Observer observer) {
         observers.add(observer);
-
     }
+
 
     void event() {
         count++;
@@ -22,6 +22,7 @@ public class WeatherData {
                 ) {
 
             observer.handleEvent();
+            observer.setCount(this);
         }
 
     }
