@@ -9,8 +9,9 @@ public class Otp {
         return numberOTP;
     }
 
-    public void sendNumber(Pull pull){
-        pull.setNumberPull(numberOTP);
+    public void sendNumber(Pull pull,int a){
+        this.numberOTP=a;
+        pull.setNumberPull(a);
     }
 
 }
