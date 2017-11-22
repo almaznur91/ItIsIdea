@@ -21,8 +21,8 @@ public class WeatherData {
         for (Observer observer : observers
                 ) {
 
-            observer.handleEvent();
             observer.setCount(this.count);
+            observer.handleEvent();
         }
 
     }
