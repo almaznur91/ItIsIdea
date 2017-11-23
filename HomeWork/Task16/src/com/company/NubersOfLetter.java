@@ -26,4 +26,5 @@ public class NubersOfLetter implements Observer {
     }
 
 
+
 }

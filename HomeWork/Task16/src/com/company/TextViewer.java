@@ -20,10 +20,12 @@ public class TextViewer {
 
     void event() {
         for (Observer observer : observers) {
-            observer.handleEvent(this.text);
+            new Thread(() -> observer.handleEvent(text)).start();
         }
 
     }
+
+
 
 
 }
