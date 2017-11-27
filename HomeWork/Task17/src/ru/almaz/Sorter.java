@@ -9,9 +9,6 @@ public class Sorter {
 
         sort1(array,0,array.length-1);
 
-
-
-
     }
 
     void sort1(int[] array,int start,int end){
