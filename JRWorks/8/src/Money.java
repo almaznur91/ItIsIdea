@@ -1,4 +1,4 @@
-public class Money {
+public abstract class Money {
     private int amound;
 
     public Money(int amound) {
@@ -8,6 +8,7 @@ public class Money {
     int getAmound(){
           return amound;
     }
+    abstract String getCurrencyName();
 
 
 

@@ -21,7 +21,7 @@ public class Main {
 
        for (Money money : ivan.getList()){
 
-           System.out.println(ivan.name+ " имеет "+ money.getAmound() + money.getCurrencyName());
+           System.out.println(ivan.name+ " имеет "+ money.getAmound() + "" + " "  + money.getCurrencyName());
 
        }
 
