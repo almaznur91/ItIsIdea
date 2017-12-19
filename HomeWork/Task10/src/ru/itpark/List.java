@@ -1,6 +1,6 @@
 package ru.itpark;
 
-public interface List extends Iterable {
+public interface List <T>extends Iterable{
   /**
    * Добавление в конец
    * @param element
@@ -16,4 +16,5 @@ public interface List extends Iterable {
   int indexOf(Object object);
 
   int size();
+
 }

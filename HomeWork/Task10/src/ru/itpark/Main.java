@@ -20,5 +20,15 @@ public class Main {
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
+
+        ArrayList<String> arrayList = new ArrayList();
+        arrayList.add("A");
+        arrayList.add("B");
+        arrayList.add("C");
+        arrayList.stream()
+
+
+
+
     }
 }
