@@ -85,7 +85,7 @@ public class ArrayList<T> implements List<T> {
     }
 
 
-    private class ArrayListStream<T> implements Stream<T> {
+    private static class ArrayListStream<T> implements Stream<T> {
 
         private ArrayList<T> streamArrayList = new ArrayList<>();
 
@@ -122,8 +122,12 @@ public class ArrayList<T> implements List<T> {
 
 
         @Override
-        public <R> Stream map(Function<T, R> function) {
-            return null;
+        public <R> Stream <R> map(Function<T, R> function) {
+            ArrayList<R>rArrayList = new ArrayList<>();
+            for (T t:streamArrayList) {
+                rArrayList.add(function.apply(t));
+                return rArrayList.stream();
+            }
 
 
 

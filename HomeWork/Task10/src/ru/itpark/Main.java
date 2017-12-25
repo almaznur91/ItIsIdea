@@ -25,7 +25,7 @@ public class Main {
         arrayList.add("A");
         arrayList.add("B");
         arrayList.add("C");
-        arrayList.stream()
+        arrayList.stream
 
 
 
