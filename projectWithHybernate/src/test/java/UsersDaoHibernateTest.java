@@ -1,3 +1,6 @@
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,9 +17,9 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.*;
 
-public class UsersDaoJdbcTemplateImplTest {
+public class UsersDaoHibernateTest {
 
-    UsersDaoJdbcTemplateImpl usersDao;
+    UserDaoHibernate usersDao;
     private JdbcTemplate template;
 
 
@@ -28,8 +31,14 @@ public class UsersDaoJdbcTemplateImplTest {
                 .addScript("schema.sql")
                 .addScript("data.sql")
                 .build();
-        usersDao = new UsersDaoJdbcTemplateImpl(database);
         template = new JdbcTemplate(database);
+
+        Configuration configuration = new Configuration();
+        configuration.setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:test");
+        configuration.addAnnotatedClass(User.class);
+        SessionFactory factory = configuration.buildSessionFactory();
+        usersDao = new UserDaoHibernate(factory);
+
     }
 
 
@@ -41,25 +50,23 @@ public class UsersDaoJdbcTemplateImplTest {
                     .id(rs.getLong("id"))
                     .userLogin(rs.getString("userLogin"))
                     .userPassword(rs.getString("userPassword"))
-                    .email(rs.getString("email"))
                     .name(rs.getString("name"))
+                    .email(rs.getString("email"))
                     .build();
 
         }
     };
 
-
     @Test
     public void save() {
-        User expected = new User().builder()
-                .id(2L)
+        User expected = User.builder()
                 .userLogin("zagr91")
                 .userPassword("191991666")
                 .email("zagirnur@gmail.com")
                 .name("Zagir")
                 .build();
         usersDao.save(expected);
-        User actual = template.queryForObject("SELECT * FROM users WHERE id = ? " ,rowMapper,2);
+        User actual = template.queryForObject("SELECT * FROM users WHERE id = 1 " ,rowMapper);
         Assert.assertEquals(actual, expected);
 
 

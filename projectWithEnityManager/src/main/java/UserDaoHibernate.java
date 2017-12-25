@@ -13,7 +13,8 @@ public class UserDaoHibernate implements UserDao {
 
     @Override
     public void save(User model) {
-        Session session =sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.persist(model);
         session.getTransaction().commit();
     }

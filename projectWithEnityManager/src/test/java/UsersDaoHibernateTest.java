@@ -1,3 +1,4 @@
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.junit.After;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.*;
 
-public class UsersDaoJdbcTemplateImplTest {
+public class UsersDaoHibernateTest {
 
     UserDaoHibernate usersDao;
     private JdbcTemplate template;
@@ -31,12 +32,10 @@ public class UsersDaoJdbcTemplateImplTest {
                 .addScript("data.sql")
                 .build();
         template = new JdbcTemplate(database);
+
         Configuration configuration = new Configuration();
-        configuration.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");
-        configuration.setProperty("hibernate.connection.url", "jdbc:postgresql://localhost:5432/almaz_example_db");
-        configuration.setProperty("hibernate.connection.username", "postgres");
-        configuration.setProperty("hibernate.connection.password", "301991666");
-        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
+        configuration.setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:test");
+        configuration.addAnnotatedClass(User.class);
         SessionFactory factory = configuration.buildSessionFactory();
         usersDao = new UserDaoHibernate(factory);
 
@@ -58,7 +57,6 @@ public class UsersDaoJdbcTemplateImplTest {
         }
     };
 
-
     @Test
     public void save() {
         User expected = User.builder()
@@ -69,7 +67,7 @@ public class UsersDaoJdbcTemplateImplTest {
                 .name("Zagir")
                 .build();
         usersDao.save(expected);
-        User actual = template.queryForObject("SELECT * FROM users WHERE id = ? " ,rowMapper,2);
+        User actual = template.queryForObject("SELECT * FROM users WHERE id = ? " ,rowMapper);
         Assert.assertEquals(actual, expected);
 
 
