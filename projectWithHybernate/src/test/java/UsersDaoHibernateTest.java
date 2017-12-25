@@ -34,7 +34,7 @@ public class UsersDaoHibernateTest {
         template = new JdbcTemplate(database);
 
         Configuration configuration = new Configuration();
-        configuration.setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:test");
+        configuration.setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:testdb");
         configuration.addAnnotatedClass(User.class);
         SessionFactory factory = configuration.buildSessionFactory();
         usersDao = new UserDaoHibernate(factory);
@@ -66,8 +66,8 @@ public class UsersDaoHibernateTest {
                 .name("Zagir")
                 .build();
         usersDao.save(expected);
-        User actual = template.queryForObject("SELECT * FROM users WHERE id = 1 " ,rowMapper);
-        Assert.assertEquals(actual, expected);
+        User actual = template.queryForObject("SELECT * FROM users WHERE id = 3 " ,rowMapper);
+        Assert.assertEquals(expected,actual);
 
 
 
@@ -85,7 +85,7 @@ public class UsersDaoHibernateTest {
                 .name("Almaz")
                 .build();
 
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(expected,actual);
 
     }
     @After

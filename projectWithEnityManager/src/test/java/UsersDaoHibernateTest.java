@@ -11,6 +11,8 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,14 +35,20 @@ public class UsersDaoHibernateTest {
                 .build();
         template = new JdbcTemplate(database);
 
+       // EntityManagerFactory entityManagerFactory =
+//                Persistence.createEntityManagerFactory("Какой то персистень");
+
+        //usersDao = new UserDaoHibernate(entityManagerFactory);
+
+
+
         Configuration configuration = new Configuration();
-        configuration.setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:test");
+        configuration.setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:testdb");
         configuration.addAnnotatedClass(User.class);
         SessionFactory factory = configuration.buildSessionFactory();
-        usersDao = new UserDaoHibernate(factory);
+        usersDao= new UserDaoHibernate(factory);
 
     }
-
 
 
     private RowMapper<User> rowMapper = new RowMapper<User>() {
@@ -60,16 +68,14 @@ public class UsersDaoHibernateTest {
     @Test
     public void save() {
         User expected = User.builder()
-                .id(2L)
                 .userLogin("zagr91")
                 .userPassword("191991666")
                 .email("zagirnur@gmail.com")
                 .name("Zagir")
                 .build();
         usersDao.save(expected);
-        User actual = template.queryForObject("SELECT * FROM users WHERE id = ? " ,rowMapper);
-        Assert.assertEquals(actual, expected);
-
+        User actual = template.queryForObject("SELECT * FROM users WHERE id = 3 ", rowMapper);
+        Assert.assertEquals(expected, actual);
 
 
     }
@@ -86,12 +92,13 @@ public class UsersDaoHibernateTest {
                 .name("Almaz")
                 .build();
 
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(expected, actual);
 
     }
+
     @After
 
-    public void dropTable(){
+    public void dropTable() {
         template.update("DROP TABLE users");
     }
 

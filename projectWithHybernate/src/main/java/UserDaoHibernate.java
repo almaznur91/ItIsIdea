@@ -22,7 +22,7 @@ public class UserDaoHibernate implements UserDao {
     @Override
     public User find(Long id) {
         Session session = sessionFactory.openSession();
-        Query<User> userQuery = session.createQuery("from User user where user = ?", User.class);
+        Query<User> userQuery = session.createQuery("from User where id = ?", User.class);
         userQuery.setParameter(0, id);
         return userQuery.getSingleResult();
     }
