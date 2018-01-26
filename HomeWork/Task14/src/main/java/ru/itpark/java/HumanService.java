@@ -1,12 +1,13 @@
-package ru.itpark;
+package ru.itpark.java;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class HumanService {
 
+  @Autowired
   private HumansDao humansDao;
 
-  public HumanService(HumansDao humansDao) {
-    this.humansDao = humansDao;
-  }
+
 
   public void registerUser(Human user) {
     // смотрим, нет ли человека с таким именем,

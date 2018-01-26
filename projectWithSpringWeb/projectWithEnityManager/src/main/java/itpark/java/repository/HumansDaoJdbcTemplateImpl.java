@@ -1,13 +1,22 @@
-package ru.itpark;
+package itpark.java.repository;
 
+import itpark.java.model.Human;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityResult;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.List;
 
+
+
+
+@Repository
 public class HumansDaoJdbcTemplateImpl implements HumansDao {
 
     //language=SQL
@@ -29,7 +38,11 @@ public class HumansDaoJdbcTemplateImpl implements HumansDao {
 
     public static final String SQL_SELECT_ALL = "SELECT *FROM owner ";
 
+    @Autowired
     private JdbcTemplate template;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     private RowMapper<Human> rowMapper = (resultSet, rowNum) -> {
         Human result = Human.builder()
@@ -42,9 +55,7 @@ public class HumansDaoJdbcTemplateImpl implements HumansDao {
         return result;
     };
 
-    public HumansDaoJdbcTemplateImpl(DataSource dataSource) {
-        this.template = new JdbcTemplate(dataSource);
-    }
+
 
     public List<Human> findAllByAge(int age) {
         return null;
@@ -58,8 +69,9 @@ public class HumansDaoJdbcTemplateImpl implements HumansDao {
         return null;
     }
 
+    @Transactional
     public void save(Human model) {
-        template.update(SQL_INSERT_USER, model.getAge(), model.getName(), model.getCitizen());
+        entityManager.persist(model);
     }
 
     public Human find(Long id) {
@@ -82,5 +94,10 @@ public class HumansDaoJdbcTemplateImpl implements HumansDao {
         return template.query(SQL_SELECT_ALL, rowMapper);
 
     }
+
+
+
+
+
 
 }

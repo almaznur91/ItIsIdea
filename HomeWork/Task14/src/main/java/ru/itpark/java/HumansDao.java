@@ -1,4 +1,4 @@
-package ru.itpark;
+package ru.itpark.java;
 
 import java.util.List;
 

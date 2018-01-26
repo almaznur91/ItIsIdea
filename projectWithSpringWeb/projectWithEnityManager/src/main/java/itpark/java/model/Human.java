@@ -1,7 +1,11 @@
-package ru.itpark;
+package itpark.java.model;
 
 import lombok.*;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "owner")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -9,9 +13,14 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 @Builder
+
 public class Human {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private String name;
+
+
   private int age;
+  private String name;
   private String citizen;
 }
