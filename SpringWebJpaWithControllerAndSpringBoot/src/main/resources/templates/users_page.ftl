@@ -1,4 +1,5 @@
 <#ftl encoding='UTF-8'>
+<#import 'spring.ftl' as spring>
 <@spring.bind "model"/>
 <html>
 <head>
@@ -8,13 +9,21 @@
 <table>
     <tr>
         <th>ID</th>
-        <th>Имя</th>
-        <th>Дата регистрации</th>
+        <th>userLogin</th>
+        <th>userPassword</th>
+        <th>name</th>
+        <th>email</th>
+        <#--<th>orders</th>-->
+
     </tr>
     <#list model.users as user>
     <tr>
         <td>${user.id}</td>
+        <td>${user.userLogin}</td>
+        <td>${user.userPassword}</td>
         <td>${user.name}</td>
+        <td>${user.email}</td>
+        <#--<td>${user.orders}</td>-->
         <#--<td>${user.registrationTime}</td>-->
     </tr>
     </#list>

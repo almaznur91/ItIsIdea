@@ -24,10 +24,10 @@ public class Order {
     private long id;
     private Date name;
     private int number;
-    @ManyToMany
-    @JoinTable(name = "orders_user",
-                        joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
-                        inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
-
-    private List<User> owners;
+//    @ManyToMany
+//    @JoinTable(name = "orders_user",
+//                        joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+//                        inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+//
+//    private ArrayList<User> owners;
 }

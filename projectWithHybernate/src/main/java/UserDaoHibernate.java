@@ -32,6 +32,7 @@ public class UserDaoHibernate implements UserDao {
 
         Session session = sessionFactory.openSession();
         session.update(model);
+        session.getTransaction().commit();
 
     }
 

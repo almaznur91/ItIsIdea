@@ -3,6 +3,7 @@ package ru.almaz.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +28,14 @@ public class User {
     private String userPassword;
     private String name;
     private String email;
-    @ManyToMany(mappedBy = "owners")
-    private List<Order> orders;
+    private LocalDateTime registrationDate;
+    @Enumerated(EnumType.STRING)
+    private State state;
+
+    private String confirmString;
+
+//    @ManyToMany(mappedBy = "owners")
+//    private ArrayList<Order> orders;
 
 
 
