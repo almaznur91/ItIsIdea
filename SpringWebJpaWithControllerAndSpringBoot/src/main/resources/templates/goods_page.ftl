@@ -11,7 +11,7 @@
         <th>ID</th>
         <th>name</th>
         <th>price</th>
-        <th>ccal</th>
+        <th>kcal</th>
         <th>weight</th>
     </tr>
     <#list model.goods as goods>
@@ -19,10 +19,13 @@
             <td>${goods.id}</td>
             <td>${goods.name}</td>
             <td>${goods.price}</td>
-            <td>${goods.ccal}</td>
+            <td>${(goods.kcal)!}</td>
             <td>${goods.weight}</td>
             <td><a href="/goods/delete?id=${goods.id}">Удалить</a></td>
         </tr>
+        <#list goods.orders as order>
+            <tr><td>${order.time}</td></tr>
+        </#list>
     </#list>
 </table>
 

@@ -3,6 +3,7 @@ package ru.almaz.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,12 +23,10 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private Date name;
+    private LocalDateTime time;
     private int number;
-//    @ManyToMany
-//    @JoinTable(name = "orders_user",
-//                        joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
-//                        inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
-//
-//    private ArrayList<User> owners;
+
+    @ManyToMany(mappedBy = "orders")
+    private List<Goods> goods;
+
 }

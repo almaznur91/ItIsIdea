@@ -34,8 +34,6 @@ public class User {
 
     private String confirmString;
 
-//    @ManyToMany(mappedBy = "owners")
-//    private ArrayList<Order> orders;
 
 
 
