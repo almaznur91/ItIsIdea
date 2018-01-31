@@ -31,4 +31,8 @@ public class Order {
     @ManyToMany(mappedBy = "orders")
     private List<Goods> goods;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
 }

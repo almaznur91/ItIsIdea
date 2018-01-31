@@ -26,16 +26,16 @@ public class BasketController {
                                Authentication authentication){
         model.addAttribute("goods", userRepository.findByUserLogin(authentication.getName()));
 
-        if (goods.getOrders()!=null) {
-            Order order = Order.builder()
-                    .time(LocalDateTime.now())
-                    .number(4)
-                    .orderStatus(OrderStatus.OPEN)
-                    .build();
-            goods.getOrders().add(order);
-            orderRepository.save(order);
-            goodsRepository.save(goods);
-        }
+//        if (goods.getOrders()!=null) {
+//            Order order = Order.builder()
+//                    .time(LocalDateTime.now())
+//                    .number(4)
+//                    .orderStatus(OrderStatus.OPEN)
+//                    .build();
+//            goods.getOrders().add(order);
+//            orderRepository.save(order);
+//            goodsRepository.save(goods);
+//        }
         return "basket_page";
     }
 

@@ -1,11 +1,14 @@
 package ru.almaz.models;
 
 import lombok.*;
+import org.aspectj.weaver.ast.Or;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -34,6 +37,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
     private String confirmString;
+
+    @OneToMany/*(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)*/
+
+    private Set<Order> orders = new HashSet<Order>();
 
 
 
