@@ -8,6 +8,7 @@ import ru.almaz.models.State;
 import ru.almaz.models.User;
 import ru.almaz.repositories.UserRepository;
 
+import javax.mail.MessagingException;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,7 +26,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     private EmailService emailService;
 
     @Override
-    public void registrationUser(RegistrationForm form) {
+    public void registrationUser(RegistrationForm form) throws MessagingException {
         String confirmString = UUID.randomUUID().toString();
 
         User newUser = User.builder()
@@ -42,6 +43,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         emailService.sendMail(newUser.getEmail(),"Подтверждение регистрации", mailText );
 
         userRepository.save(newUser);
+
     }
 
     @Override

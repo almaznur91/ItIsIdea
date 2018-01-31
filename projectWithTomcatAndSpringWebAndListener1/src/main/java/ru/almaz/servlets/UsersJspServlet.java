@@ -1,57 +1,57 @@
-//package ru.almaz.servlets;
-//import ru.almaz.repository.UserDao;
-//import ru.almaz.repository.UserDaoHibernate;
-//import ru.almaz.models.User;
-//
-//import javax.persistence.EntityManager;
-//import javax.persistence.Persistence;
-//import javax.servlet.ServletException;
-//import javax.servlet.http.HttpServlet;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import java.io.IOException;
-//import java.util.List;
-//
-//public class UsersJspServlet extends HttpServlet {
-//
-//    private UserDao userDao;
-//
-//    @Override
-//    public void init() throws ServletException {
-//        EntityManager entityManager =
-//                Persistence.createEntityManagerFactory("ru.itpark.persistence")
-//                        .createEntityManager();
-//
-//        userDao = new UserDaoHibernate(entityManager);
-//    }
-//
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        List<User> users = userDao.findAll();
-//
-//        req.setAttribute("users", users);
-//
-//        req.getRequestDispatcher("/jsp/users.jsp").forward(req, resp);
-//    }
-//
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.setCharacterEncoding("UTF-8");
-//        String userLogin = req.getParameter("userLogin");
-//        String userPassword= req.getParameter("userPassword");
-//        String name = req.getParameter("name");
-//        String email = req.getParameter("email");
-//
-//
-//        User user = User.builder()
-//                .userLogin(userLogin)
-//                .userPassword(userPassword)
-//                .name(name)
-//                .email(email)
-//                .build();
-//
-//        userDao.save(user);
-//
-//        resp.sendRedirect("/users_as_jsp");
-//    }
-//}
+package ru.almaz.servlets;
+import ru.almaz.repository.UserDao;
+import ru.almaz.repository.UserDaoHibernate;
+import ru.almaz.models.User;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+
+public class UsersJspServlet extends HttpServlet {
+
+    private UserDao userDao;
+
+    @Override
+    public void init() throws ServletException {
+        EntityManager entityManager =
+                Persistence.createEntityManagerFactory("ru.itpark.persistence")
+                        .createEntityManager();
+
+        userDao = new UserDaoHibernate(entityManager);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<User> users = userDao.findAll();
+
+        req.setAttribute("users", users);
+
+        req.getRequestDispatcher("/jsp/users.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        String userLogin = req.getParameter("userLogin");
+        String userPassword= req.getParameter("userPassword");
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+
+
+        User user = User.builder()
+                .userLogin(userLogin)
+                .userPassword(userPassword)
+                .name(name)
+                .email(email)
+                .build();
+
+        userDao.save(user);
+
+        resp.sendRedirect("/users_as_jsp");
+    }
+}

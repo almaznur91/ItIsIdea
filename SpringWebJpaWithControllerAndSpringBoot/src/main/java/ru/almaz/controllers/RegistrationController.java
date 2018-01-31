@@ -3,12 +3,11 @@ package ru.almaz.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.almaz.forms.RegistrationForm;
 import ru.almaz.service.RegistrationService;
+
+import javax.mail.MessagingException;
 
 @Controller
 public class RegistrationController {
@@ -21,8 +20,19 @@ public class RegistrationController {
         return "sign_up";
     }
 
-    @PostMapping("signUp")
-    public String registrationUser(@ModelAttribute RegistrationForm form){
+    @GetMapping("/signIn")
+    public String getSignInPage(@ModelAttribute("model") ModelMap model,
+                                @RequestParam(value = "error", required = false) String error) {
+        if (error != null) {
+            model.addAttribute("error", true);
+        }
+        return "sign_in";
+
+    }
+
+
+    @PostMapping("/signUp")
+    public String registrationUser(@ModelAttribute RegistrationForm form) throws MessagingException {
         service.registrationUser(form);
         return "success_sign_up";
     }
@@ -35,9 +45,10 @@ public class RegistrationController {
         model.addAttribute("confirmResult", confirmResult);
         return "confirm_result";
 
-
-
     }
+
+
+
 
 //    @RequestMapping(value = "/users", method = RequestMethod.POST)
 //    public ModelAndView addUser(@ModelAttribute User user){
