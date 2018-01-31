@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ru.almaz.forms.RegistrationForm;
+import ru.almaz.models.Role;
 import ru.almaz.models.State;
 import ru.almaz.models.User;
 import ru.almaz.repositories.UserRepository;
@@ -24,23 +25,23 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Autowired
     private EmailService emailService;
-
     @Override
     public void registrationUser(RegistrationForm form) throws MessagingException {
-        String confirmString = UUID.randomUUID().toString();
-
+//        String confirmString = UUID.randomUUID().toString();
+//
         User newUser = User.builder()
                 .userLogin(form.getUserLogin())
                 .email(form.getEmail())
                 .userPassword(passwordEncoder.encode(form.getUserPassword()))
                 .registrationDate(LocalDateTime.now())
-                .state(State.NOT_CONFIRMED)
-                .confirmString(confirmString)
+                .state(State.CONFIRMED)
+                .role(Role.USER)
+//                .confirmString(confirmString)
                 .build();
-
-        String mailText = "<a href=\"http://localhost:8080/confirm/" + confirmString + "\">Подвтердить</a>";
-
-        emailService.sendMail(newUser.getEmail(),"Подтверждение регистрации", mailText );
+//
+//        String mailText = "<a href=\"http://localhost:8080/confirm/" + confirmString + "\">Подвтердить</a>";
+//
+//        emailService.sendMail(newUser.getEmail(),"Подтверждение регистрации", mailText );
 
         userRepository.save(newUser);
 

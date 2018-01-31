@@ -25,6 +25,8 @@ public class Order {
     private long id;
     private LocalDateTime time;
     private int number;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
     @ManyToMany(mappedBy = "orders")
     private List<Goods> goods;

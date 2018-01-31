@@ -13,6 +13,7 @@ import ru.almaz.forms.AddGoodsForm;
 import ru.almaz.models.Goods;
 import ru.almaz.models.GoodsStatus;
 import ru.almaz.models.Order;
+import ru.almaz.models.OrderStatus;
 import ru.almaz.repositories.GoodsRepository;
 import ru.almaz.repositories.OrderRepository;
 import ru.almaz.service.AddGoodsService;
@@ -49,6 +50,7 @@ public class GoodsController {
             Order order = Order.builder()
                     .time(LocalDateTime.now())
                     .number(4)
+                    .orderStatus(OrderStatus.OPEN)
                     .build();
             goods.getOrders().add(order);
             orderRepository.save(order);

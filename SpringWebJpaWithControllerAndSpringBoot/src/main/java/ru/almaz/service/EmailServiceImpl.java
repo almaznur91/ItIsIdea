@@ -19,11 +19,13 @@ public class EmailServiceImpl implements EmailService {
     @SneakyThrows
     public void sendMail(String email, String subject, String text) throws MessagingException {
         MimeMessage message = javaMailSender.createMimeMessage();
-        message.setContent("first", "text/html");
+
+        message.setContent(text, "text/html");
         MimeMessageHelper messageHelper = new MimeMessageHelper(message, true);
-        messageHelper.setTo("zagirnur@gmail.com");
-        messageHelper.setSubject("second");
-        messageHelper.setText("third", true);
+        messageHelper.setTo(email);
+        messageHelper.setSubject(subject);
+        messageHelper.setText(text, true);
+
         javaMailSender.send(message);
     }
 }

@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
+//@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 @ComponentScan(basePackages = "ru.almaz")
 @EntityScan(basePackages = "ru.almaz.models", basePackageClasses = Jsr310JpaConverters.class)
 public class Main{

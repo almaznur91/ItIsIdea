@@ -8,6 +8,7 @@ import ru.almaz.forms.RegistrationForm;
 import ru.almaz.service.RegistrationService;
 
 import javax.mail.MessagingException;
+import java.util.Optional;
 
 @Controller
 public class RegistrationController {
@@ -27,7 +28,6 @@ public class RegistrationController {
             model.addAttribute("error", true);
         }
         return "sign_in";
-
     }
 
 
