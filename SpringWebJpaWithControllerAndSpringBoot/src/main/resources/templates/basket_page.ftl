@@ -33,6 +33,7 @@
 
 </table>
 <td><a href="/goods">Перейти в список товаров</a></td>
+<td><a href="/profile">Вернуться в профиль</a></td>
 
 
 <#--<form action="/users" method="post">-->

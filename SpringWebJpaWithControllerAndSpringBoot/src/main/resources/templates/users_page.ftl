@@ -13,6 +13,8 @@
         <th>userPassword</th>
         <th>name</th>
         <th>email</th>
+        <th>Role</th>
+
         <#--<th>orders</th>-->
 
     </tr>
@@ -21,9 +23,12 @@
         <td>${user.id}</td>
         <td>${user.userLogin}</td>
         <td>${user.userPassword}</td>
-        <td>${user.name}</td>
+        <td>${(user.name)!}</td>
         <td>${user.email}</td>
-        <#--<td>${user.orders}</td>-->
+        <td>${user.role}</td>
+        <td><a href="/users/changeRole?id=${user.id}">Сменить роль</a></td>
+
+    <#--<td>${user.orders}</td>-->
         <#--<td>${user.registrationTime}</td>-->
     </tr>
     </#list>

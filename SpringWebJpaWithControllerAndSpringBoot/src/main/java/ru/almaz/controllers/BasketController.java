@@ -12,6 +12,7 @@ import ru.almaz.repositories.GoodsRepository;
 import ru.almaz.repositories.OrderRepository;
 import ru.almaz.repositories.UserRepository;
 import ru.almaz.service.GoodsService;
+import ru.almaz.service.OrderServiceImpl;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -19,34 +20,37 @@ import java.util.Optional;
 @Controller
 public class BasketController {
 
-    @Autowired
-    private GoodsRepository goodsRepository;
-    @Autowired
-    private UserRepository userRepository;
+
     @Autowired
     private OrderRepository orderRepository;
     @Autowired
-    GoodsService goodsService;
+    private GoodsService goodsService;
+    @Autowired
+    private OrderServiceImpl orderService;
+
 
     @GetMapping("/basket")
-    public String getGoodsPage(ModelMap model
-                                ) {
-//       Optional <User> userOptional = userRepository.findByUserLogin(authentication.getName());
-//
-//       if(userOptional.isPresent()) {
-//
-//       }
+    public String getGoodsPage(ModelMap model) {
 
         model.addAttribute("order", goodsService.getBasket());
         return "basket_page";
     }
 
     @GetMapping("basket/delete")
-    public String deleteGoodByBasket(@RequestParam(value = "id", required = false) Integer id){
+    public String deleteGoodByBasket(@RequestParam(value = "id", required = false) Integer id) {
         Order order = goodsService.getBasket();
         order.getGoods().remove(id.intValue()).getOrders().remove(order);
         orderRepository.save(order);
-    return "redirect:/basket";
+        return "redirect:/basket";
     }
 
+
+    @GetMapping("/goods/add_to_basket")
+    public String getGoodsPage(@RequestParam(value = "id", required = false) Long id) {
+        orderService.addGoodToOrder(id);
+        return "redirect:/goods";
+    }
+
+
 }
+

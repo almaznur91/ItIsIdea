@@ -17,9 +17,10 @@ public class AddGoodsServiceImpl implements AddGoodsService {
                 .name(form.getName())
                 .kcal(form.getPrice())
                 .price(form.getPrice())
-                .status(form.getStatus())
                 .weight(form.getWeight())
+                .status(form.getStatus())
                 .build();
+        System.out.println("НУ как? ");
         goodsRepository.save(goods);
     }
 }

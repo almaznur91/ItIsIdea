@@ -25,7 +25,9 @@
             <td>${(goods.status)!}</td>
 
 
+            <td><a href="/goods/delete?id=${goods.id}">Снять с публикации</a></td>
             <td><a href="/goods/add_to_basket?id=${goods.id}">Добавить в корзину</a></td>
+            <td><a href="/goods/publish?id=${goods.id}">Опубликовать товар</a></td>
 
         </tr>
 
@@ -36,6 +38,7 @@
     </#list>
 
 </table>
+<td><a href="/addGoods">Добавить новый товар!</a></td>
 <td><a href="/basket">Перейти в корзину</a></td>
 <td><a href="/profile">Вернуться в профиль</a></td>
 
