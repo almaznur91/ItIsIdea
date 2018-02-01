@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.almaz.forms.AddGoodsForm;
-import ru.almaz.models.Goods;
-import ru.almaz.models.GoodsStatus;
-import ru.almaz.models.Order;
-import ru.almaz.models.OrderStatus;
+import ru.almaz.models.*;
 import ru.almaz.repositories.GoodsRepository;
 import ru.almaz.repositories.OrderRepository;
+import ru.almaz.security.details.UserDetailsImpl;
 import ru.almaz.service.AddGoodsService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +44,7 @@ public class GoodsController {
                                @ModelAttribute("model") ModelMap model) {
 
         Goods goods = goodsRepository.findOne(id);
-        if (goods.getOrders()!=null) {
+        if (goods.getOrders() != null) {
             Order order = Order.builder()
                     .time(LocalDateTime.now())
                     .number(4)
@@ -86,10 +84,12 @@ public class GoodsController {
 
     @PostMapping("/addGoods")
     public String addGoods(@ModelAttribute AddGoodsForm form,
-                                   @ModelAttribute("model") ModelMap model) {
+                           @ModelAttribute("model") ModelMap model,
+                           Authentication authentication) {
+        if (((UserDetailsImpl)authentication.getPrincipal()).getUser().getRole().equals(Role.MODERATOR))
         service.addGoods(form);
-        model.addAttribute("goods",goodsRepository.findAll());
-        return "goods_page";
+        model.addAttribute("goods", goodsRepository.findAll());
+        return "redirect:/goods";
     }
 
 

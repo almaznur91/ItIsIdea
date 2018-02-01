@@ -57,4 +57,7 @@ public class UserDetailsImpl implements UserDetails {
                // user.getState().equals(State.CONFIRMED);
     }
 
+    public User getUser() {
+        return user;
+    }
 }

@@ -6,12 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import ru.almaz.models.Order;
-import ru.almaz.models.OrderStatus;
+import org.springframework.web.bind.annotation.RequestParam;
+import ru.almaz.models.*;
 import ru.almaz.repositories.GoodsRepository;
+import ru.almaz.repositories.OrderRepository;
 import ru.almaz.repositories.UserRepository;
+import ru.almaz.service.GoodsService;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Controller
 public class BasketController {
@@ -20,24 +23,30 @@ public class BasketController {
     private GoodsRepository goodsRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
+    GoodsService goodsService;
 
     @GetMapping("/basket")
-    public String getGoodsPage(@ModelAttribute("model") ModelMap model,
-                               Authentication authentication){
-        model.addAttribute("goods", userRepository.findByUserLogin(authentication.getName()));
+    public String getGoodsPage(ModelMap model
+                                ) {
+//       Optional <User> userOptional = userRepository.findByUserLogin(authentication.getName());
+//
+//       if(userOptional.isPresent()) {
+//
+//       }
 
-//        if (goods.getOrders()!=null) {
-//            Order order = Order.builder()
-//                    .time(LocalDateTime.now())
-//                    .number(4)
-//                    .orderStatus(OrderStatus.OPEN)
-//                    .build();
-//            goods.getOrders().add(order);
-//            orderRepository.save(order);
-//            goodsRepository.save(goods);
-//        }
+        model.addAttribute("order", goodsService.getBasket());
         return "basket_page";
     }
 
+    @GetMapping("basket/delete")
+    public String deleteGoodByBasket(@RequestParam(value = "id", required = false) Integer id){
+        Order order = goodsService.getBasket();
+        order.getGoods().remove(id.intValue()).getOrders().remove(order);
+        orderRepository.save(order);
+    return "redirect:/basket";
+    }
 
 }

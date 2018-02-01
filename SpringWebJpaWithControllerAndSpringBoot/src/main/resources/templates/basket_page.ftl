@@ -1,6 +1,5 @@
 <#ftl encoding='UTF-8'>
 <#import 'spring.ftl' as spring>
-<@spring.bind "model"/>
 <html>
 <head>
     <title>Товары</title>
@@ -14,13 +13,15 @@
         <th>kcal</th>
         <th>weight</th>
     </tr>
-    <#list model.goods as goods>
+    <#list (order.goods)! as goods>
         <tr>
             <td>${goods.id}</td>
             <td>${goods.name}</td>
             <td>${goods.price}</td>
             <td>${(goods.kcal)!}</td>
             <td>${goods.weight}</td>
+            <td><a href="/basket/delete?id=${goods_index}">Убрать с корзины</a></td>
+
 
         </tr>
 

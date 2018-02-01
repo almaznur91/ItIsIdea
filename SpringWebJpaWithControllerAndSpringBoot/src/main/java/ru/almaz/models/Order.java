@@ -28,11 +28,11 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    @ManyToMany(mappedBy = "orders")
+    @ManyToMany(mappedBy = "orders",fetch = FetchType.EAGER)
     private List<Goods> goods;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id"/*, nullable = false*/)
     private User user;
 
 }
