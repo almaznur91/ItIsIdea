@@ -19,8 +19,6 @@ public class UserServiceImpl {
 
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private UserServiceImpl userService;
 
     public boolean isUserByModerator() {
 
@@ -65,7 +63,7 @@ public class UserServiceImpl {
     }
 
     public void setUserRole(Long id, Role role){
-        if (userService.isUserbyAdmin()){
+        if (isUserbyAdmin()){
             User user = userRepository.findOne(id);
             user.setRole(role);
             userRepository.save(user);
