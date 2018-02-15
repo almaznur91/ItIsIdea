@@ -31,23 +31,23 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
 
+            <li class=" nav-item active pr-2">
+                <a class="btn btn-primary" href="/addGoods" role="button">Добавить новый товар <span class="sr-only">(current)</span></a>
+            </li>
+
             <li class=" nav-item active">
                 <a class="nav-link" href="/profile">Профиль <span class="sr-only">(current)</span></a>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link" href="/profile/goods">Товары</a>
+                <a class="nav-link" href="/goods">Товары</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Заказы
-                </a>
 
-            </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="/logout">Выход</a>
             </li>
+
         </ul>
 
     </div>
@@ -71,6 +71,7 @@
                         <th scope="col">Вес</th>
                         <th scope="col">Энергия </th>
                         <th scope="col">Цена</th>
+                        <th scope="col">Статус</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
@@ -81,18 +82,19 @@
                 <tr>
                     <td><#if (goods.image.storageFileName)??>
 
-                        <p><a href="/goods/oneGoods?id=${goods.id}">
+                        <p><a href="/oneGoods?id=${goods.id}">
                             <img class="img-circle" width='100' height='100' src="/files/${goods.image.storageFileName}"></a></p>
                     </#if></td>
                     <td class="align-middle">${(goods.name)!}</td>
-                    <td class="align-middle">${(goods.weight)!}</td>
+                    <td class="align-middle">${(goods.weight)!} г</td>
                     <td class="align-middle">${(goods.kcal)!} кКал</td>
                     <td class="align-middle">${(goods.price)!} руб.</td>
+                    <td class="align-middle">${(goods.status)!} </td>
 
                     </td>
-                    <td><a href="/goods/delete?id=${goods.id}">Снять с публикации</a></td>
-                    <td><a href="/goods/publish?id=${goods.id}">Опубликовать товар</a></td>
-                    <td><a href="/goods/updateGoods?id=${goods.id}">Изменить товар</a></td>
+                    <td class="align-middle"><a href="/goods/delete?id=${goods.id}">Снять</a></td>
+                    <td class="align-middle"><a href="/goods/publish?id=${goods.id}">Опубликовать </a></td>
+                    <td class="align-middle"><a href="/goods/updateGoods?id=${goods.id}">Изменить </a></td>
 
                 </tr>
                 </#list>
@@ -121,8 +123,6 @@
 
 
 
-<h5><a href="/addGoods">Добавить новый товар!</a></h5>
-<h5><a href="/profile">Вернуться в профиль</a></h5>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

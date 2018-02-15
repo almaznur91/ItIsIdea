@@ -23,6 +23,10 @@
         <br>
 
 </div>
+
+
+<form action="/addGoods" method="post" enctype="multipart/form-data">
+
 <div>
     <input type="text" id="name" <#if goods.name??>
         value = "${goods.name}"
@@ -38,16 +42,23 @@
            value="${goods.price}"
     <#else> placeholder="Не заполнено!"
     </#if>>
+    <input type="text" id="specification" <#if goods.specification ??>
+           value="${goods.specification}"
+    <#else> placeholder="Не заполнено!"
+    </#if>>
 
     <button onclick="updateGoods(document.getElementById('name').value,
                                  document.getElementById('kcal').value,
                                  document.getElementById('price').value,
-                                 ${id})
+                                 document.getElementById('specification').value,
+                                ${id})
                                  ">Сохранить</button>
 
 </div>
+</form>
 
-    <div id="avatar">
+
+<div id="avatar">
          <#if (goods.image.storageFileName)??>
             <img class="img-circle" width='100' height='100' src="/files/${goods.image.storageFileName}">
          </#if>

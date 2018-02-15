@@ -27,24 +27,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class=" nav-item active">
-                <a class="nav-link" href="#">Профиль <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/profile">Профиль <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Товары</a>
+                <a class="nav-link" href="/goods">Товары</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Заказы
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Все заказы</a>
-                    <a class="dropdown-item" href="#">Последний заказ</a>
-                    <!--<div class="dropdown-divider"></div>-->
-                    <a class="dropdown-item" href="#">Заказы</a>
-                </div>
-            </li>
+
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Выход</a>
+                <a class="nav-link disabled" href="/logout">Выход</a>
             </li>
         </ul>
 
@@ -67,47 +57,47 @@
 
 <div class="container ">
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8 pt-1 ">
+        <div class="col-1"></div>
+        <div class="col-10 pt-1 ">
             <div class="row border p-3">
                 <div class="col-6 ">
-                    <img height="300" src="https://totosushi.ru/168-tm_large_default/koka-kola-05l.jpg" class=" row rounded mx-auto d-block" alt="...">
+                    <img width="400" src="/files/${(goods.image.storageFileName)!}" class=" pb-4 row rounded mx-auto d-block" alt="...">
 
 
                 </div>
                 <div class="col-6">
                     <div class="d-table my-auto pt-5">
                         <div class="d-table-row">
-                            <div class="d-table-cell pt-1 pr-2 pl-2">Имя: </div>
-                            <div class="d-table-cell ">100 кг</div>
+                            <div class="d-table-cell pt-1 pr-2 pl-2">Название товара: </div>
+                            <div class="d-table-cell ">${(goods.name)!}</div>
                         </div>
                         <div class="d-table-row">
-                            <div class="d-table-cell pt-1 pr-2 pl-2">Логин: </div>
-                            <div class="d-table-cell ">100 kkal</div>
+                            <div class="d-table-cell pt-1 pr-2 pl-2">Вес: </div>
+                            <div class="d-table-cell ">${(goods.weight)!} г.</div>
                         </div>
                         <div class="d-table-row">
-                            <div class="d-table-cell pt-1 pr-2 pl-2">Email: </div>
-                            <div class="d-table-cell ">1000 kkal</div>
+                            <div class="d-table-cell pt-1 pr-2 pl-2">Энергия: </div>
+                            <div class="d-table-cell ">${(goods.kcal)!} кКал</div>
                         </div>
                         <div class="d-table-row">
-                            <div class="d-table-cell pt-1 pr-2 pl-2">Адрес: </div>
-                            <div class="d-table-cell ">1000 kkal</div>
+                            <div class="d-table-cell pt-1 pr-2 pl-2">Цена: </div>
+                            <div class="d-table-cell h6">${(goods.price)!} руб.</div>
                         </div>
                         <div class="d-table-row">
-                            <div class="d-table-cell pt-1 pb-3 pr-2 pl-2">Номер телефона: </div>
-                            <div class="d-table-cell ">1000 kkal</div>
+                            <div class="d-table-cell pt-1 pb-3 pr-2 pl-2"> </div>
+                            <div class="d-table-cell "> </div>
                         </div>
 
                     </div>
                     <div class="d-table-row">
                         <div class="d-table-cell "> Описание товара:
-                            вааааааааааааааааааааааааааааааааааааа</div>
+                            ${(goods.specification)! "Отсутствут"}</div>
                     </div>
 
                 </div>
-
-                <button class="col-auto btn btn-success mx-auto ">Добавить в корзину</button>
-
+                <#if user.getRole()=='USER'>
+                <button onclick="addToBasket1(${goods.id})" class="col-6 btn btn-success">Добавить в корзину</button>
+                </#if>
 
             </div>
 
@@ -164,10 +154,6 @@
 
 
 
-<br>
-    <a href="/profile/goods" >Вернуться к списку товаров</a>
-<br>
-    <a href="/profile" >Вернуться на странцу профиля</a>
 
 
 

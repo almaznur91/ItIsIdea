@@ -11,6 +11,7 @@ import ru.almaz.dto.UserDto;
 import ru.almaz.models.Order;
 import ru.almaz.models.User;
 import ru.almaz.repositories.OrderRepository;
+import ru.almaz.service.GoodsService;
 import ru.almaz.service.OrderServiceImpl;
 import ru.almaz.service.UserServiceImpl;
 
@@ -25,24 +26,26 @@ public class OrderController {
     private OrderRepository orderRepository;
     @Autowired
     private UserServiceImpl userService;
+    @Autowired
+    private GoodsService goodsService;
 
     @GetMapping("/operator")
     public String getOperatorPage(@ModelAttribute("model")  ModelMap model, Authentication authentication){
-        if (userService.isUserbyAdmin(authentication)||userService.isUserByOperator(authentication)){
-        model.addAttribute("orders",orderService.getOrdersForOperator());
             model.addAttribute("operator",true);
-        }
+            model.addAttribute("orders",orderService.getOrdersForOperator());
+
         return "operator_page";
     }
     @GetMapping("/operator/showGoods")
     public String showGodsByOrder(@RequestParam(value = "id",required = false) Long id,
                                   @ModelAttribute("model") ModelMap model){
         Order order = orderRepository.findOne(id);
-        UserDto user = UserDto.from(order.getUser());
+        model.addAttribute("sumbyorder",goodsService.getSumPriceInOrder(id));
+        System.out.println(goodsService.getSumPriceInOrder(id));
         model.addAttribute("order",order);
         model.addAttribute("goods",order.getGoods());
         model.addAttribute("operator",true);
-        model.addAttribute("user",user);
+        model.addAttribute("user",UserDto.from(order.getUser()));
         return "goods_page";
     }
 
@@ -53,19 +56,16 @@ public class OrderController {
                                       HttpServletResponse response
                                   ) {
         model.addAttribute("operator",true);
+        return orderService.changeOrderStatusByController(id);
 
-        Order order = orderRepository.findOne(id);
-        orderService.changeOrderStatus(order);
-        return OrderDto.builder().id(String.valueOf(id)).orderStatus(order.getOrderStatus().toString()).build();
 
     }
 
-    @GetMapping("/profile/orders")
+    @GetMapping("/orders")
     public String getOrdersPage(Authentication authentication,
                                 @ModelAttribute("model") ModelMap model){
-        User user = userService.getUser(authentication);
         model.addAttribute("user",true);
-        model.addAttribute("orders",orderService.getOrderforUser(user));
+        model.addAttribute("orders",orderService.getOrderforUser(authentication));
         return "operator_page";
     }
 }

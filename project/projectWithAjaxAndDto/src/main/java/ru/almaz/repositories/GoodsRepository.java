@@ -11,4 +11,5 @@ public interface GoodsRepository extends JpaRepository<Goods,Long> {
     @Query(value = "from Goods goods where goods.status = 'CONFIRMED'")
     List<Goods> findAllByConfimed();
 
+
 }

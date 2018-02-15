@@ -25,6 +25,7 @@ public class Goods {
     private String price;
     private String kcal;
     private String weight;
+    private String specification;
     @Enumerated(EnumType.STRING)
     private GoodsStatus status;
     @ManyToMany

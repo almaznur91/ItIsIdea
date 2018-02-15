@@ -93,7 +93,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                    <a class="dropdown-item" href="/profile/orders">Все заказы</a>
+                    <a class="dropdown-item" href="/orders">Все заказы</a>
                     <a class="dropdown-item" href="#">Последний заказ</a>
 
                 </div>
@@ -128,7 +128,7 @@
                     <tr>
                     <td><#if (goods.image.storageFileName)??>
 
-                        <p><a href="/goods/oneGoods?id=${goods.id}">
+                        <p><a href="/oneGoods?id=${goods.id}">
                             <img class="img-circle" width='100' height='100' src="/files/${goods.image.storageFileName}"></a></p>
                     </#if></td>
                     <td class="align-middle">${(goods.name)!}</td>
@@ -165,8 +165,8 @@
 
     <form class="form-inline">
         <div class="text-info text-light pr-3 h6">Сумма заказа</div>
-        <div class="form-control mr-sm-2">${sum}</div>
-        <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/basket/checkout" type="submit">Оформить
+        <div class="form-control mr-sm-2">${sum} руб.</div>
+        <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/checkout" type="submit">Оформить
             заказ</a>
     </form>
 </nav>

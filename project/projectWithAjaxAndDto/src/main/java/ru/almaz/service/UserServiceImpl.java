@@ -3,12 +3,10 @@ package ru.almaz.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.almaz.dto.UserDto;
-import ru.almaz.models.Order;
-import ru.almaz.models.OrderStatus;
-import ru.almaz.models.Role;
-import ru.almaz.models.User;
+import ru.almaz.models.*;
 import ru.almaz.repositories.OrderRepository;
 import ru.almaz.repositories.UserRepository;
 import ru.almaz.security.details.UserDetailsImpl;
@@ -59,9 +57,20 @@ public class UserServiceImpl {
         }
     }
     public User getUser(Authentication authentication){
-        User user = ((UserDetailsImpl)authentication.getPrincipal()).getUser();
+        User user = userRepository.findByUserLogin(authentication.getName()).orElseThrow(()->new UsernameNotFoundException("Пользователь не найден"));
         return user;
     }
+
+    public void setUserState(Long id, State state, Authentication authentication){
+        if (isUserbyAdmin(authentication)){
+            User user=userRepository.findOne(id);
+            user.setState(state);
+            userRepository.save(user);
+        }
+    }
+
+
+
 
 
 }

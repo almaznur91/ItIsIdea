@@ -42,7 +42,7 @@
 
                     <#if model.operator??>
                     <#else >
-                    <a class="dropdown-item" href="/profile/orders">Все заказы</a>
+                    <a class="dropdown-item" href="/orders">Все заказы</a>
                     <a class="dropdown-item" href="#">Последний заказ</a>
                     </#if>
 
@@ -81,9 +81,10 @@
     <div class="row pt-3">
         <div class="col-3"></div>
         <div class="col-6">
-            <div class="row border border-dark p-3">
+
+            <div class="row border border-dark p-3 ">
                 <div class="col-5">
-                    <img height="200" src="${(model.user.imageUrl)!}"
+                   <img width="250" src="${(model.user.imageUrl)!}"
                          class=" row rounded mx-auto d-block" alt="...">
 
                 </div>
@@ -105,21 +106,25 @@
                             <div class="d-table-cell pt-1 pr-2 pl-2">Номер телефона:</div>
                             <div class="d-table-cell ">${(model.user.telephone)!}</div>
                         </div>
-                        <div class="d-table-row pb-3">
-                            <button> fdddddf</button>
+                        <div class="d-table-row">
+                            <div class="d-table-cell h6 pt-3 pb-2 pr-2 pl-2">Сумма заказа</div>
+                            <div class="d-table-cell h6">${(model.sumbyorder)!} руб.</div>
                         </div>
+
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+
+
     </#if>
 
     <div class="row pt-3">
         <#list model.goods as goods>
         <div class="col-4 p-3">
-            <a href="/goods/oneGoods?id=${goods.id}"><img src="/files/${(goods.image.storageFileName)!}" class="w-75 h-25 row rounded mx-auto d-block" alt="..."></a>
+            <a href="/oneGoods?id=${goods.id}"><img src="/files/${(goods.image.storageFileName)!}" class="w-75 h-25 row rounded mx-auto d-block" alt="..."></a>
             <p class="h6 text-center pt-2">${(goods.name)!"Пусто"}</p>
             <div class="d-table m-auto">
                 <div class="d-table-row">
@@ -132,7 +137,7 @@
                 </div>
             </div>
             <div class="row justify-content-center pt-2">
-                <div class="h4 pl-3 col-4 text-right">100Р</div>
+                <div class="h4 mx-auto pl-3 col-4 text-right">${(goods.price)!} Р</div>
             <#if model.operator?? >
             <#else >
             <button onclick="addToBasket(${goods.id})" class="col-6 btn btn-success">В корзину</button>
@@ -163,7 +168,7 @@
 
 
 
-<#if model.operator ??>
+<#if model.user ??>
 <#else >
     <nav class=" navbar fixed-bottom container navbar navbar-dark navbar-expand-sm bg-dark justify-content-between ">
         <a class="navbar-brand " href="/basket" >Корзина</a>
@@ -172,8 +177,8 @@
 
         <form class="form-inline">
             <div class="text-info text-light pr-3 h6">Сумма заказа</div>
-            <div class="form-control mr-sm-2">${(sum)!}</div>
-            <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/basket/checkout" type="submit">Оформить заказ</a>
+            <div class="form-control mr-sm-2">${(model.sum)!}</div>
+            <a class="btn btn-outline-success my-2 my-sm-0" role="button" href="/checkout" type="submit">Оформить заказ</a>
         </form>
     </nav>
 </#if>

@@ -38,9 +38,12 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="/profile/goods">Товары</a>
+                <a class="nav-link" href="/goods">Товары</a>
             </li>
              <#if userAdmin.role=="ADMIN">
+             <li class="nav-item">
+                 <a class="nav-link" href="/users">Пользователи</a>
+             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Заказы
@@ -69,8 +72,6 @@
             <div class="row border border-dark p-3">
                 <div class="col-6 ">
                     <img  width='200'  src="/files/${(userAdmin.image.storageFileName)!}" class=" row rounded mx-auto d-block" alt="...">
-                    <input type="file" name = "file" id = "fileInput" placeholder="Файл фото">
-                    <button class="col-auto btn btn-success" onclick="imageUpload(document.getElementById('fileInput')['files'][0])">Сменить фото</button>
 
                 </div>
                 <div class="col-6">
@@ -96,6 +97,19 @@
                             <div class="d-table-cell ">${(userAdmin.telephone)!}</div>
                         </div>
                     </div>
+
+                    <div class="d-table-row">
+                        <div class="d-table-cell pb-1 pt-1 pr-2 pl-2"><input type="file" name="file" id="fileInput"
+                                                                             placeholder="Файл фото"></div>
+                    </div>
+
+                    <div class="d-table-row">
+                        <div class="d-table-cell pb-3 pt-1 pr-2 pl-2">
+                            <button class="col-auto btn btn-success"
+                                    onclick="imageUpload(document.getElementById('fileInput')['files'][0])">Сменить аватарку
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -109,14 +123,7 @@
         </div>
     </div>
 
-    <div>
-        <h5>Редактирование имени</h5>
-        <input type="text" id="name" <#if userAdmin.name??>
-    value="${userAdmin.name}"
-        <#else> placeholder="Не заполнено"
-        </#if>>
-        <button onclick="updateProfileForModerator(document.getElementById('name').value)">Сохранить</button>
-    </div>
+
 
 
     <!--TODO: здесь требуется разобраться как считать корзину-->

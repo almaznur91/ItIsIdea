@@ -61,11 +61,18 @@ public class GoodsController {
 
     @GetMapping("/goods/updateGoods")
     public String showGoods(@RequestParam(value = "id", required = false) Long id, ModelMap model){
-
-        Goods goods = goodsRepository.findOne(id);
-        model.addAttribute("goods", goods);
+        model.addAttribute("goods", goodsRepository.findOne(id));
         model.addAttribute("id",id);
         return "goods_page_dto";
+
+    }
+    @PostMapping("/goods/updateGoods")
+    @ResponseBody
+    public String editGoods(@RequestParam(value = "id", required = false) Long id, ModelMap model){
+        model.addAttribute("goods", goodsRepository.findOne(id));
+        model.addAttribute("id",id);
+        return "redirect:/goods/updateGoods";
+
 
     }
 
@@ -73,13 +80,13 @@ public class GoodsController {
     public String getGoodsPage(@ModelAttribute("model") ModelMap model,Authentication authentication) {
 
         if (userService.isUserByModerator(authentication) || userService.isUserbyAdmin(authentication)) {
-            List<GoodsDto> goodsDtos;
             model.addAttribute("goods", goodsRepository.findAll());
             return "goods_page_for_moderator";
         } else {
             model.addAttribute("goods", goodsRepository.findAllByConfimed());
-
             model.addAttribute("sum",goodsService.getAllPriceInBasket());
+            model.addAttribute("user", true);
+
         }
 
         return "goods_page";
@@ -99,11 +106,12 @@ public class GoodsController {
     }
 
     @PostMapping("/addGoods")
-    @ResponseBody
-    public void addGoods(@ModelAttribute AddGoodsForm form,Authentication authentication) {
+    public String addGoods(@ModelAttribute AddGoodsForm form,Authentication authentication) {
+        Long id = null;
         if (userService.isUserbyAdmin(authentication) || userService.isUserByModerator(authentication)) {
-            addGoodsService.addGoods(form);
+            id = addGoodsService.addGoods(form);
         }
+        return "redirect:/oneGoods?id="+id;
     }
 
     @PostMapping(value = "/goods/update")
@@ -111,12 +119,14 @@ public class GoodsController {
     public void updateGoods(UpdateGoodsForm form) {
         goodsService.updateGoods(form);
     }
-    @GetMapping("/goods/oneGoods")
-    public String showOneGoods(@RequestParam(value = "id", required = false) Long id,
-                               ModelMap model){
 
-        Goods goods = goodsRepository.findOne(id);
-        model.addAttribute("goods", goods);
+
+    @GetMapping(value = "/oneGoods")
+    public String showOneGoods(@RequestParam(value = "id", required = false) Long id,
+                               ModelMap model, Authentication authentication){
+
+        model.addAttribute("goods", goodsRepository.findOne(id));
+        model.addAttribute("user",userService.getUser(authentication));
         return "one_goods_page";
 
     }

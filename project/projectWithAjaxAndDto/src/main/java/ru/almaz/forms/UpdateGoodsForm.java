@@ -14,6 +14,7 @@ public class UpdateGoodsForm {
     String kcal;
     String price;
     Long id;
+    String specification;
 
     public void update(Goods model) {
         if (name.equals("")) {
@@ -31,5 +32,10 @@ public class UpdateGoodsForm {
             price =null;
         }
         model.setPrice(price);
+
+        if (specification.equals("")){
+            specification =null;
+        }
+        model.setPrice(specification);
     }
 }

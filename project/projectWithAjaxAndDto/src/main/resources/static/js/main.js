@@ -1,4 +1,4 @@
-function updateGoods(name, kcal, price, id) {
+function updateGoods(name, kcal, price, id, specification) {
 
     $.ajax({
         url: "/goods/update",
@@ -7,7 +7,8 @@ function updateGoods(name, kcal, price, id) {
             name: name,
             kcal: kcal,
             price: price,
-            id: id
+            id: id,
+            specification:specification
         },
 
         success:
@@ -35,7 +36,7 @@ function changeOrderStatus(id) {
     });
 }
 
-function addGoods(name, price, kcal, weight, status) {
+function addGoods(name, price, kcal, weight, status, specification) {
 
     $.ajax({
         url: "/addGoods",
@@ -45,7 +46,8 @@ function addGoods(name, price, kcal, weight, status) {
             price: price,
             kcal: kcal,
             weight: weight,
-            status: status
+            status: status,
+            specification:specification
         },
 
         success:
@@ -144,6 +146,12 @@ function addToBasket(id) {
         },{}
     )
 }
-
+function addToBasket1(id) {
+    $.get("/oneGoods",
+        {
+            id: id
+        },{}
+    )
+}
 
 

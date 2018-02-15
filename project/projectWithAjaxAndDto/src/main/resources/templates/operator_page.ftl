@@ -36,18 +36,21 @@
             </li>
             </#if>
             <li class="nav-item dropdown">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    <#if  model.operator??>
+
+                        <a class="dropdown-item" href="/operator">Заказы</a>
+
+                        <#else >
+                        <a class="dropdown-item" href="/orders">Все заказы</a>
+                        <a class="dropdown-item" href="#">Последний заказ</a>
+                        <!--<div class="dropdown-divider"></div>-->
+                        </#if>
+                </div>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Заказы
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <#if  model.operator??>
-                        <a class="dropdown-item" href="/operator">Заказы</a>
-                        <#else>
-                        <a class="dropdown-item" href="/profile/orders">Все заказы</a>
-                        <a class="dropdown-item" href="#">Последний заказ</a>
-                        <!--<div class="dropdown-divider"></div>-->
-                    </#if>
-                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="/logout">Выход</a>
@@ -56,6 +59,10 @@
 
     </div>
 </nav>
+
+
+
+<#if  model.operator??>
 
 <div class="container pt-1 pl-3">
     <div class="row pt-3">
@@ -67,7 +74,7 @@
                 <div class="d-table-row pt-2">
                     <div class="h6 d-table-cell  mx-auto pt-1 pr-3 pl-3">Номер заказа</div>
                     <#--<div class="h6  d-table-cell pt-1 pr-5 ">Общая цена</div>-->
-                    <div class="h6  d-table-cell pt-1  pr-5">Дата заказа</div>
+                    <div class="h6  d-table-cell pt-1 pr-5">Дата заказа</div>
                     <div class=" h6 d-table-cell pt-1 pr-5">Статус заказа</div>
                     <div class="h6  d-table-cell pt-1 pr-5">Профиль заказа</div>
                 </div>
@@ -75,19 +82,22 @@
             <#list model.orders as orders>
 
             <div class="d-table-row">
-                <div class="d-table-cell  mx-auto pt-1 pr-5 pl-5">      ${orders.id}</div>
+                <div class="d-table-cell  mx-auto pt-2 pr-5 pl-5">      ${orders.id}</div>
                 <#--<div class="d-table-cell pt-1 pr-5 ">${orders.number}</div>-->
-                <div class="d-table-cell pt-1  pr-5">${orders.time}</div>
-                <div class="d-table-cell pt-1 pr-5">${orders.orderStatus}</div>
-                <div class="d-table-cell pt-1 pr-5"><a href="/operator/showGoods?id=${orders.id}">Посмотреть заказ</a></div>
+                <div class="d-table-cell pt-2  pr-5">${orders.time}</div>
+                <div class="d-table-cell pt-2 pr-5">${orders.orderStatus}</div>
+                <div class="d-table-cell pt-2 pr-5"><a href="/operator/showGoods?id=${orders.id}">Посмотреть заказ</a></div>
                 <#if  model.user??>
                 <#else >
-                <div class="d-table-cell  pt-1 pr-5 pl-8"><button class="btn btn-success" onclick="changeOrderStatus(${orders.id})">Сменить статус заказа</button>
+                <div class="d-table-cell  pt-2 pr-5 pl-8"><button class="btn btn-success" onclick="changeOrderStatus(${orders.id})">Сменить статус</button>
                 </#if>
 
                 </div>
-            </div>
-            </#list>
+
+
+        </div>
+
+                         </#list>
 
 
         </div>
@@ -96,6 +106,55 @@
 
 </div>
 
+</#if>
+
+
+
+<#if  model.operator??>
+<#else>
+<div class="container pt-1 pl-3">
+    <div class="row pt-3">
+        <div class="col-2"></div>
+        <div class="col-8 border border-dark p-3">
+
+            <p class="h5 text-center pt-2">Список  заказов</p>
+            <div class="d-table">
+                <div class="d-table-row pt-2">
+                    <div class="h6 d-table-cell  mx-auto pt-1 pr-3 pl-3">Номер заказа</div>
+                <#--<div class="h6  d-table-cell pt-1 pr-5 ">Общая цена</div>-->
+                    <div class="h6  d-table-cell pt-1 pl-5 pr-5">Дата заказа</div>
+                    <div class=" h6 d-table-cell pt-1 pr-5">Статус заказа</div>
+                    <div class="h6  d-table-cell pt-1 pr-5">Профиль заказа</div>
+                </div>
+            </div>
+
+            <#list model.orders as orders>
+
+            <div class="d-table-row">
+                <div class="d-table-cell  mx-auto pt-2 pr-5 pl-5">${orders.id}</div>
+            <#--<div class="d-table-cell pt-1 pr-5 ">${orders.number}</div>-->
+                <div class="d-table-cell pt-2  pr-5">${orders.time}</div>
+                <div class="d-table-cell pt-2 pr-5">${orders.orderStatus}</div>
+                <div class="d-table-cell pt-2 pr-5"><a href="/operator/showGoods?id=${orders.id}">Посмотреть заказ</a></div>
+                <#if  model.user??>
+                <#else >
+                <div class="d-table-cell  pt-2 pr-5 pl-8"><button class="btn btn-success" onclick="changeOrderStatus(${orders.id})">Сменить статус заказа</button>
+                </#if>
+
+            </div>
+
+
+            </#list>
+        </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+</#if>
 
 <!--TODO: здесь требуется разобраться как считать корзину-->
 

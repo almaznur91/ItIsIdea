@@ -1,5 +1,6 @@
 package ru.almaz.controllers;
 
+import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -34,18 +35,22 @@ public class ProfileController {
     private FilesStorageService filesStorageService;
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/")
+    public  String main(){
+        return "redirect:profile";
+    }
 
     @GetMapping("/profile")
     public String getProfilePage(ModelMap model, Authentication authentication) {
         if (userService.isUserbyAdmin(authentication) || userService.isUserByModerator(authentication)) {
-            User userAdmin = profileService.getUserInformationComplete(authentication);
-            model.addAttribute("userAdmin",userAdmin);
+            model.addAttribute("userAdmin", profileService.getUserInformationComplete(authentication));
             return "profile_for_moderator";
-        }
-        else {
-            UserDto user = profileService.getUserInformationInComplete(authentication);
-            model.addAttribute("user", user);
-            model.addAttribute("sum",goodsService.getAllPriceInBasket());
+        } else {
+            model.addAttribute("user", profileService.getUserInformationInComplete(authentication));
+            model.addAttribute("sum", goodsService.getAllPriceInBasket());
 
             return "profile";
         }
@@ -62,6 +67,8 @@ public class ProfileController {
             return "goods_page_for_moderator";
         } else {
             model.addAttribute("goods", goodsRepository.findAllByConfimed());
+            model.addAttribute("sum",goodsService.getAllPriceInBasket());
+
             return "goods_page";
         }
     }
@@ -74,8 +81,8 @@ public class ProfileController {
 
     @PostMapping("/avatar")
     @ResponseBody
-    public String handleAvatarUpload(@RequestParam("file")MultipartFile file, Authentication authentication) {
-        return filesStorageService.saveImageByAvatar(file,authentication);
+    public String handleAvatarUpload(@RequestParam("file") MultipartFile file, Authentication authentication) {
+        return filesStorageService.saveImageByAvatar(file, authentication);
     }
 
 

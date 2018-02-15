@@ -97,4 +97,14 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 
     }
 
+    @Override
+    public FileInfo saveGoodsPhoto(MultipartFile file) {
+        imagesFilesValidator.validate(file);
+
+        FileInfo  fileInfo = fileStorageUtil.convertFromToMultiPart(file);
+        fileInfoRepository.save(fileInfo);
+        fileStorageUtil.copyToStorage(file,fileInfo.getStorageFileName());
+        return fileInfo;
+    }
+
 }

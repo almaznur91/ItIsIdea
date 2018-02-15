@@ -35,15 +35,13 @@ public class BasketController {
     public String getGoodsPage(ModelMap model) {
 
         model.addAttribute("order", goodsService.getBasket());
-        model.addAttribute("sum",goodsService.getAllPriceInBasket());
+        model.addAttribute("sum", goodsService.getAllPriceInBasket());
         return "basket_page";
     }
 
     @GetMapping("basket/delete")
     public String deleteGoodByBasket(@RequestParam(value = "id", required = false) Long id) {
-        Order order = goodsService.getBasket();
-        goodsRepository.findOne(id).getOrders().remove(order);
-        orderRepository.save(order);
+        orderService.deleteGoodByBasket(id);
         return "redirect:/basket";
     }
 
@@ -54,10 +52,18 @@ public class BasketController {
         return "redirect:/goods";
     }
 
-    @GetMapping("basket/checkout")
-    public String setOrderStatusProcessing(){
-       orderService.setOrderStatusCheckout();
-        return "redirect:/profile";
+    @GetMapping("/showGoods")
+    public String getGoodsPage1(@RequestParam(value = "id", required = false) Long id) {
+        orderService.addGoodToOrder(id);
+        return "redirect:/goods";
+    }
+
+    @GetMapping("/checkout")
+    public String setOrderStatusProcessing(ModelMap model) {
+        Order order =orderService.getOrderStatusCheckout();
+        model.addAttribute("order", order);
+        model.addAttribute("sum", goodsService.getSumPriceInOrder(order.getId()));
+        return "successful_order_page";
 
     }
 

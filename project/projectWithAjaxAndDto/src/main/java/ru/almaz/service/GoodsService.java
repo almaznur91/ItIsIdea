@@ -6,10 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ru.almaz.dto.GoodsDto;
 import ru.almaz.forms.UpdateGoodsForm;
-import ru.almaz.models.Goods;
-import ru.almaz.models.GoodsStatus;
-import ru.almaz.models.Order;
-import ru.almaz.models.OrderStatus;
+import ru.almaz.models.*;
 import ru.almaz.repositories.GoodsRepository;
 import ru.almaz.repositories.OrderRepository;
 import ru.almaz.repositories.UserRepository;
@@ -67,11 +64,22 @@ public class GoodsService {
         Order order = getBasket();
         List<Goods>goods=order.getGoods();
         int sum=0;
-        for (int i=0;i<goods.size();i++){
-            sum=sum+ Integer.parseInt(goods.get(i).getPrice());
+        for (Goods good : goods) {
+            sum = sum + Integer.parseInt(good.getPrice());
         }
         return sum;
     }
+
+    public int getSumPriceInOrder(Long id){
+        Order order = orderRepository.findOne(id);
+        List<Goods>goods=order.getGoods();
+        int sum=0;
+        for (Goods good : goods) {
+            sum = sum + Integer.parseInt(good.getPrice());
+        }
+        return sum;
+    }
+
 
 
 }

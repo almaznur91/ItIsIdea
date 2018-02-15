@@ -33,6 +33,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/signUp/**").permitAll()
                 .antMatchers("/confirm/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -45,7 +47,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/signIn")
+                .logoutSuccessUrl("/")
                 .and()
                 .rememberMe() // настраиваем функционал "Запомнить меня"
                 .rememberMeParameter("remember-me") // говорим, что параметр будет называться именно так
